@@ -1,0 +1,19 @@
+<mat-toolbar [class.mat-elevation-z6]="true">
+  <span>Codeathon</span>
+  <div style="margin-left: 20px;">
+    <button mat-button routerLink="/explore">Explore</button>
+    <button mat-button>Fight</button>
+    <button mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
+    <mat-menu #challengeMenu="matMenu">
+      <button mat-menu-item routerLink="/create-challenge">Create new challenge</button>
+      <button mat-menu-item>View result</button>
+    </mat-menu>
+    <button mat-button>History</button>
+  </div>
+
+  <span class="example-spacer"></span>
+  <h4 style="size: 2vw;" *ngIf="userService.user">{{userService.user.data.displayName}}</h4>
+  <button mat-icon-button color="accent" routerLink="/login">
+    <mat-icon aria-label="Example icon-button with a heart icon">account_circle</mat-icon>
+  </button>
+</mat-toolbar>
