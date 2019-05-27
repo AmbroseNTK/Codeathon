@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Solution</h1>
+<div mat-dialog-content>
+  <p>Language: {{data.language}}</p>
+  <td-code-editor [value]="data.code" style="width: 500px;"></td-code-editor>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</div>
