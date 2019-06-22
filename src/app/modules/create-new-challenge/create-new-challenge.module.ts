@@ -4,8 +4,12 @@ import { CommonModule } from '@angular/common';
 import { CreateNewChallengeRoutingModule } from './create-new-challenge-routing.module';
 import { CreateFormComponent } from './create-form/create-form.component';
 import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule, MatFormFieldModule, MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
-import {MatInputModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 import { TestcasesTableComponent } from './testcases-table/testcases-table.component';
 import {FormsModule} from '@angular/forms';
 

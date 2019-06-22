@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {ChallengeEntityModel} from '../../../states/models/challenge.entity.model';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import {ChallengeService} from '../../../services/challenge.service';
 import {Store} from '@ngrx/store';
 import IAppState from '../../../states/models/IAppState';

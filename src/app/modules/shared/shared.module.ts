@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
-import {MatButtonModule, MatCardModule, MatPaginatorModule, MatSortModule, MatTableModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [ChallengeListComponent],

@@ -5,7 +5,9 @@ import {ChallengeEntityModel} from '../../../states/models/challenge.entity.mode
 import {ConfigService} from '../../../services/config.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatTableDataSource} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import {SolutionDialogComponent} from '../solution-dialog/solution-dialog.component';
 import {catchError, map} from 'rxjs/operators';
 
