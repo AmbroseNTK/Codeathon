@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
+import { UserService } from '../../services/user.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,9 @@ import {UserService} from '../../services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public userService:UserService) { }
+  constructor(public userService: UserService, public afAuth: AngularFireAuth) {
+
+  }
 
   ngOnInit() {
   }

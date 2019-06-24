@@ -12,7 +12,7 @@
   </div>
 
   <span class="example-spacer"></span>
-  <h4 style="size: 2vw;" *ngIf="userService.user">{{userService.user.data.displayName}}</h4>
+  <h4 style="size: 2vw;" *ngIf="afAuth.auth.currentUser!=null">{{afAuth.auth.currentUser.displayName}}</h4>
   <button mat-icon-button color="accent" routerLink="/login">
     <mat-icon aria-label="Example icon-button with a heart icon">account_circle</mat-icon>
   </button>

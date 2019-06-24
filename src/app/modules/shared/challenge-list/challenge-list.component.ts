@@ -1,11 +1,11 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {ChallengeEntityModel} from '../../../states/models/challenge.entity.model';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ChallengeEntityModel } from '../../../states/models/challenge.entity.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import {ChallengeService} from '../../../services/challenge.service';
-import {Store} from '@ngrx/store';
+import { ChallengeService } from '../../../services/challenge.service';
+import { Store } from '@ngrx/store';
 import IAppState from '../../../states/models/IAppState';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-challenge-list',
@@ -15,22 +15,22 @@ import {Router} from '@angular/router';
 export class ChallengeListComponent implements OnInit {
 
   @Output()
-  selectChallenge:EventEmitter<ChallengeEntityModel> = new EventEmitter();
+  selectChallenge: EventEmitter<ChallengeEntityModel> = new EventEmitter();
 
-  data:Array<ChallengeEntityModel>;
-  dataSource:MatTableDataSource<ChallengeEntityModel> = new MatTableDataSource<ChallengeEntityModel>(this.data);
+  data: Array<ChallengeEntityModel>;
+  dataSource: MatTableDataSource<ChallengeEntityModel> = new MatTableDataSource<ChallengeEntityModel>(this.data);
 
   displayedColumns: string[] = ['challengeID', 'title', 'shortDescription', 'select'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  constructor(private store:Store<IAppState>, private router:Router) { }
+  constructor(private store: Store<IAppState>, private router: Router) { }
 
   ngOnInit() {
-    this.store.select('challenges').subscribe((state)=>{
+    this.store.select('challenges').subscribe((state) => {
       let keys = Object.keys(state.list);
       this.data = new Array<ChallengeEntityModel>();
-      for(let i = 0; i<keys.length;i++){
+      for (let i = 0; i < keys.length; i++) {
         this.data.push(state.list[keys[i]]);
       }
       console.log(this.data);
@@ -40,9 +40,9 @@ export class ChallengeListComponent implements OnInit {
 
   }
 
-  public select(i){
+  public select(i) {
     this.selectChallenge.emit(this.data[i]);
-    this.router.navigate(['/solving/'+this.data[i].challengeID]);
+    this.router.navigate(['/solving/' + this.data[i].challengeID]);
   }
 
 }
