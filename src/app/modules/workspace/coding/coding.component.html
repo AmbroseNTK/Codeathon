@@ -13,7 +13,7 @@
         {{challenge.shortDescription}}
       </mat-card-subtitle>
     </mat-card-header>
-    <hr/>
+    <hr />
     <mat-card-content>
       <h4>Details</h4>
       <markdown [data]="replaceNewLine(challenge.details)">
@@ -22,48 +22,48 @@
       <markdown [data]="replaceNewLine(challenge.sampleInput)"></markdown>
       <h4>Sample Output</h4>
       <markdown [data]="replaceNewLine(challenge.sampleOutput)"></markdown>
-      <hr/>
+      <hr />
       <div *ngIf="hasLeaderboard()">
-      <h3><span style="size: 20px;color: coral" >Leader board</span></h3>
-      <div class="mat-elevation-z8" style="margin: 10px;">
-        <table mat-table [dataSource]="dataSource" matSort style="width: 100%;">
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-          </ng-container>
+        <h3><span style="size: 20px;color: coral">Leader board</span></h3>
+        <div class="mat-elevation-z8" style="margin: 10px;">
+          <table mat-table [dataSource]="dataSource" matSort style="width: 100%;">
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+              <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-          </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="runningTime">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Running Time </th>
-            <td mat-cell *matCellDef="let row"> {{row.runningTime}} </td>
-          </ng-container>
+            <ng-container matColumnDef="runningTime">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Running Time </th>
+              <td mat-cell *matCellDef="let row"> {{row.runningTime}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="language">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
-            <td mat-cell *matCellDef="let row"> {{row.language}} </td>
-          </ng-container>
+            <ng-container matColumnDef="language">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
+              <td mat-cell *matCellDef="let row"> {{row.language}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-            <td mat-cell *matCellDef="let row"> {{row.date}} </td>
-          </ng-container>
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+              <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+            </ng-container>
 
-          <ng-container matColumnDef="solution" *ngIf="canView()">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Solution </th>
-            <td mat-cell *matCellDef="let row; let i = index"> <button mat-button (click)="showSolution(i)">View</button> </td>
-          </ng-container>
+            <ng-container matColumnDef="solution" *ngIf="canView()">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Solution </th>
+              <td mat-cell *matCellDef="let row; let i = index"> <button mat-button
+                  (click)="showSolution(i)">View</button> </td>
+            </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-          </tr>
-        </table>
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-      </div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
@@ -74,26 +74,32 @@
     <mat-card-content>
       <mat-form-field>
         <mat-label>Programming language</mat-label>
-        <mat-select [(ngModel)]="languageID" >
+        <mat-select [(ngModel)]="languageID">
           <mat-option *ngFor="let language of languages; let i = index" [value]="i">
             {{language}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <br/>
-      <td-code-editor theme="vs-dark" language="c" style="height: 500px;width: 100%;" [(ngModel)]="code"></td-code-editor>
+      <br />
+      <td-code-editor theme="vs-dark" language="c" style="height: 500px;width: 100%;" [(ngModel)]="code">
+      </td-code-editor>
     </mat-card-content>
     <mat-card-actions>
-      <button *ngIf="!isRunning" mat-raised-button style="background: forestgreen; color: white" (click)="run()"><i class="material-icons">play_arrow</i>Run</button>
-      <button *ngIf="isRunning" mat-raised-button style="background: darkgray; color: white"><i class="material-icons">fast_forward</i>Running</button>
+      <button *ngIf="!isRunning" mat-raised-button style="background: forestgreen; color: white" (click)="run()"><i
+          class="material-icons">play_arrow</i>Run</button>
+      <button *ngIf="isRunning" mat-raised-button style="background: darkgray; color: white"><i
+          class="material-icons">fast_forward</i>Running</button>
     </mat-card-actions>
   </mat-card>
   <div *ngIf="response">
     <mat-card style="margin: 10px;" [ngStyle]="{background:response.type=='success'?'green':'red'}">
       <mat-card-header>
-        <mat-card-title style="color: white" *ngIf="response.type == 'failed'"><i class="material-icons">error</i>Test failed</mat-card-title>
-        <mat-card-title style="color: white" *ngIf="response.type == 'error'"><i class="material-icons">bug_report</i>  Error</mat-card-title>
-        <mat-card-title style="color: white" *ngIf="response.type == 'success'"><i class="material-icons">check</i>Success</mat-card-title>
+        <mat-card-title style="color: white" *ngIf="response.type == 'failed'"><i class="material-icons">error</i>Test
+          failed</mat-card-title>
+        <mat-card-title style="color: white" *ngIf="response.type == 'error'"><i class="material-icons">bug_report</i>
+          Error</mat-card-title>
+        <mat-card-title style="color: white" *ngIf="response.type == 'success'"><i
+            class="material-icons">check</i>Success</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div *ngIf="response.type == 'error'">
@@ -105,8 +111,9 @@
         </div>
         <div *ngIf="response.type =='success'">
           <span style="color: white">You have passed all test ({{response.passed}} test(s))</span>
-          <br/>
-          <span style="color: white"><i class="material-icons">timelapse</i> Running time: {{response.time}} second(s)</span>
+          <br />
+          <span style="color: white"><i class="material-icons">timelapse</i> Running time: {{response.time}}
+            second(s)</span>
         </div>
       </mat-card-content>
     </mat-card>

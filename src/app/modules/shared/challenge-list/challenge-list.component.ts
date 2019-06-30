@@ -6,6 +6,7 @@ import { ChallengeService } from '../../../services/challenge.service';
 import { Store } from '@ngrx/store';
 import IAppState from '../../../states/models/IAppState';
 import { Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'shared-challenge-list',
@@ -23,6 +24,7 @@ export class ChallengeListComponent implements OnInit {
   displayedColumns: string[] = ['challengeID', 'title', 'shortDescription', 'select'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private store: Store<IAppState>, private router: Router) { }
 
@@ -35,14 +37,20 @@ export class ChallengeListComponent implements OnInit {
       }
       console.log(this.data);
       this.dataSource = new MatTableDataSource<ChallengeEntityModel>(this.data);
-
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
 
   }
 
-  public select(i) {
-    this.selectChallenge.emit(this.data[i]);
-    this.router.navigate(['/solving/' + this.data[i].challengeID]);
+  public select(challengeID) {
+    let selectedChallenge: ChallengeEntityModel = this.data.filter((challenge) => challenge.challengeID == challengeID)[0]
+    this.selectChallenge.emit(selectedChallenge);
+    this.router.navigate(['/solving/' + challengeID]);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

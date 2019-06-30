@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [ChallengeListComponent],
@@ -18,7 +20,9 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatButtonModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class SharedModule { }

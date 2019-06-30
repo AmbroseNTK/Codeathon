@@ -9,32 +9,32 @@
         <mat-label>Challenge ID</mat-label>
         <mat-select *ngIf="challengeService.challenges" (valueChange)="select($event)">
           <mat-option *ngFor="let challenge of challengeService.challenges" [value]="challenge">
-            {{challenge.challengeID}}
+            {{challenge['challengeID']}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Title" [(ngModel)]="selectedChallenge.title" />
+        <input matInput placeholder="Title" [(ngModel)]="selectedChallenge['title']" />
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Short description" [(ngModel)]="selectedChallenge.shortDescription" />
+        <input matInput placeholder="Short description" [(ngModel)]="selectedChallenge['shortDescription']" />
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Details" [(ngModel)]="selectedChallenge.details"></textarea>
+        <textarea matInput placeholder="Details" [(ngModel)]="selectedChallenge['details']"></textarea>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Sample Input" [(ngModel)]="selectedChallenge.sampleInput"></textarea>
+        <textarea matInput placeholder="Sample Input" [(ngModel)]="selectedChallenge['sampleInput']"></textarea>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Sample Output" [(ngModel)]="selectedChallenge.sampleOutput"></textarea>
+        <textarea matInput placeholder="Sample Output" [(ngModel)]="selectedChallenge['sampleOutput']"></textarea>
       </mat-form-field>
       <br />
-      <app-testcases-table [data]="selectedChallenge.testCases" (dataChanged)="setTestCases($event)">
+      <app-testcases-table [data]="selectedChallenge['testCases']" (dataChanged)="setTestCases($event)">
       </app-testcases-table>
     </mat-card-content>
     <mat-card-actions>
