@@ -45,6 +45,9 @@ export class ChallengeEffect {
     ofType(ChallengeUser.ChallengeActions.FETCH_OWN),
     mergeMap(() => this.db.object("challenges/").snapshotChanges()),
     map((snapshot) => {
+      if (this.afAuth.auth.currentUser == null) {
+        return new FetchOwnFailed();
+      }
       let data = snapshot.payload.val();
       if (data != null) {
         let selected = {}

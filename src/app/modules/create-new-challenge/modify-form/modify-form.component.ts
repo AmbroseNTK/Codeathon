@@ -45,7 +45,7 @@ export class ModifyFormComponent implements OnInit {
   }
 
   delete() {
-
+    this.challengeService.delete(this.selectedChallenge['challengeID']);
   }
 
 }

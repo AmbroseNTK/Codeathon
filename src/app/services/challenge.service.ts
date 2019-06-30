@@ -5,6 +5,7 @@ import { Challenge } from '../states/models/challenge.model';
 import { Observable } from 'rxjs';
 import { Fetch, Put, FetchOwn, Update } from '../states/actions/challenge.action';
 import { ChallengeEntityModel } from '../states/models/challenge.entity.model';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ChallengeService {
   public challenges$: Observable<Challenge>;
   public challenges: Array<Challenge>;
 
-  constructor(private store: Store<IAppState>) {
+  constructor(private store: Store<IAppState>, private db: AngularFireDatabase) {
     this.challenges$ = store.select('challenges');
     this.challenges$.subscribe(value => {
 
@@ -39,6 +40,14 @@ export class ChallengeService {
 
   public update(id: string, data: {}) {
     this.store.dispatch(new Update({ challengeID: id, data: data }));
+  }
+
+  public delete(id: string) {
+    this.db.object("challenges/" + id).remove().then(() => {
+      this.onUpdateResult(id + " was deleted");
+    }).catch((err) => {
+      this.onUpdateResult("Cannot delete " + id);
+    })
   }
 
   public onPutResult: (status: string) => void;

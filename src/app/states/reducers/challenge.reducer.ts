@@ -13,6 +13,8 @@ export function challengeReducer(state: Challenge = defaultChallenge, action: Al
       return { ...state, list: <Array<ChallengeEntityModel>>action.payload.challenge };
     case ChallengeActions.FETCH_OWN_SUCCESS:
       return { ...state, list: <Array<ChallengeEntityModel>>action.payload.challenge };
+    case ChallengeActions.FETCH_OWN_FAILED:
+      return { ...state, list: [] };
     default:
       return state;
   }
