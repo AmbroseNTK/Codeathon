@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChallengeService } from '../../../services/challenge.service';
 
 @Component({
   selector: 'app-search-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public challengeService: ChallengeService) {
+    this.challengeService.fetch();
+  }
 
   ngOnInit() {
   }

@@ -4,10 +4,11 @@ import { from, Observable, of } from 'rxjs';
 import * as ChallengeUser from '../actions/challenge.action';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { FetchFailed, FetchSuccess, Put, PutFailed, PutSuccess } from '../actions/challenge.action';
+import { FetchFailed, FetchOwnSuccess, FetchOwnFailed, FetchSuccess, Put, PutFailed, PutSuccess, Update, UpdateSuccess, UpdateFailed } from '../actions/challenge.action';
 import { ChallengeEntityModel } from '../models/challenge.entity.model';
 import { ChallengeService } from '../../services/challenge.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Challenge } from '../models/challenge.model';
 
 export type Action = ChallengeUser.All;
 
@@ -40,6 +41,28 @@ export class ChallengeEffect {
   );
 
   @Effect()
+  fetchOwn: Observable<Action> = this.actions.pipe(
+    ofType(ChallengeUser.ChallengeActions.FETCH_OWN),
+    mergeMap(() => this.db.object("challenges/").snapshotChanges()),
+    map((snapshot) => {
+      let data = snapshot.payload.val();
+      if (data != null) {
+        let selected = {}
+        let keys = Object.keys(data);
+        for (let i = 0; i < keys.length; i++) {
+          if (data[keys[i]]['ownerID'] == this.afAuth.auth.currentUser.uid) {
+            selected[keys[i]] = data[keys[i]]
+          }
+        }
+        return new FetchOwnSuccess({ challenge: <Array<ChallengeEntityModel>>selected });
+      }
+      else {
+        return new FetchOwnFailed();
+      }
+    })
+  )
+
+  @Effect()
   put: Observable<Action> = this.actions.pipe(
     ofType(ChallengeUser.ChallengeActions.PUT),
     map((action: Put) => action.payload.challenge),
@@ -51,6 +74,22 @@ export class ChallengeEffect {
       catchError(() => {
         this.challengeService.onPutResult("Cannot create this challenge");
         return of(new PutFailed());
+      })
+    ))
+  )
+
+  @Effect()
+  update: Observable<Action> = this.actions.pipe(
+    ofType(ChallengeUser.ChallengeActions.UPDATE),
+    map((action: Update) => action.payload),
+    switchMap((payload) => from(this.db.object("challenges/" + payload.challengeID).update(payload.data)).pipe(
+      map(() => {
+        this.challengeService.onUpdateResult(payload.challengeID + " was updated");
+        return new UpdateSuccess();
+      }),
+      catchError(() => {
+        this.challengeService.onUpdateResult("Cannot update challenge " + payload.challengeID);
+        return of(new UpdateFailed());
       })
     ))
   )

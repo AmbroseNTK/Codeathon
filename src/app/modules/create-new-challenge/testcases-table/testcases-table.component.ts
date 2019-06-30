@@ -15,6 +15,12 @@ export class TestcasesTableComponent implements OnInit {
 
   data: Array<Testcase>;
 
+  @Input('data')
+  set setData(list: Array<Testcase>) {
+    this.data = list;
+    this.reload();
+  }
+
   @Output()
   dataChanged: EventEmitter<Array<Testcase>> = new EventEmitter<Array<Testcase>>();
 
@@ -38,6 +44,8 @@ export class TestcasesTableComponent implements OnInit {
   public add() {
     if (this.dataSource == null) {
       this.dataSource = new MatTableDataSource<Testcase>();
+    }
+    if (this.data == null) {
       this.data = new Array<Testcase>();
     }
     this.data.push({

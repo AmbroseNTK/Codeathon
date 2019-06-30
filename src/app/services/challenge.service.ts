@@ -1,30 +1,48 @@
 import { Injectable } from '@angular/core';
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import IAppState from '../states/models/IAppState';
-import {Challenge} from '../states/models/challenge.model';
-import {Observable} from 'rxjs';
-import {Fetch, Put} from '../states/actions/challenge.action';
-import {ChallengeEntityModel} from '../states/models/challenge.entity.model';
+import { Challenge } from '../states/models/challenge.model';
+import { Observable } from 'rxjs';
+import { Fetch, Put, FetchOwn, Update } from '../states/actions/challenge.action';
+import { ChallengeEntityModel } from '../states/models/challenge.entity.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChallengeService {
 
-  public challenges$:Observable<Challenge>;
-  public challenges:Challenge;
+  public challenges$: Observable<Challenge>;
+  public challenges: Array<Challenge>;
 
-  constructor(private store:Store<IAppState>) {
+  constructor(private store: Store<IAppState>) {
     this.challenges$ = store.select('challenges');
-    this.challenges$.subscribe(value => this.challenges = value);
+    this.challenges$.subscribe(value => {
+
+      this.challenges = new Array<Challenge>();
+      let keys = Object.keys(value.list);
+      for (let i = 0; i < keys.length; i++) {
+        this.challenges.push(value.list[keys[i]]);
+      }
+    });
   }
 
-  public fetch(){
+  public fetch() {
     this.store.dispatch(new Fetch());
   }
-  public put(challenge:ChallengeEntityModel){
-    this.store.dispatch(new Put({challenge:challenge}));
+  public put(challenge: ChallengeEntityModel) {
+    this.store.dispatch(new Put({ challenge: challenge }));
   }
 
-  public onPutResult:(status:string)=>void;
+  public fetchOwn() {
+    this.store.dispatch(new FetchOwn());
+  }
+
+  public update(id: string, data: {}) {
+    this.store.dispatch(new Update({ challengeID: id, data: data }));
+  }
+
+  public onPutResult: (status: string) => void;
+
+  public onUpdateResult: (status: string) => void;
+
 }

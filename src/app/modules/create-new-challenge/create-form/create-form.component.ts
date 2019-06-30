@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Testcase} from '../../../states/models/testcase.model';
-import {UserService} from '../../../services/user.service';
-import {ChallengeService} from '../../../services/challenge.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {ChallengeEntityModel} from '../../../states/models/challenge.entity.model';
+import { Testcase } from '../../../states/models/testcase.model';
+import { UserService } from '../../../services/user.service';
+import { ChallengeService } from '../../../services/challenge.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChallengeEntityModel } from '../../../states/models/challenge.entity.model';
 
 @Component({
   selector: 'app-create-form',
@@ -12,31 +12,31 @@ import {ChallengeEntityModel} from '../../../states/models/challenge.entity.mode
 })
 export class CreateFormComponent implements OnInit {
 
-  testCases:Array<Testcase> = new Array<Testcase>();
-  challengeID ="";
+  testCases: Array<Testcase> = new Array<Testcase>();
+  challengeID = "";
   title = "";
-  shortDescription="";
+  shortDescription = "";
   details = "";
   sampleInput = "";
   sampleOutput = "";
 
-  constructor(private userService:UserService, private challengeService:ChallengeService, private snackBar:MatSnackBar) { }
+  constructor(private userService: UserService, private challengeService: ChallengeService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.challengeService.onPutResult = (result) => {
-      this.snackBar.open(result,null,{
-        duration:1000
+      this.snackBar.open(result, null, {
+        duration: 1000
       });
     }
   }
 
-  setTestCases(data){
+  setTestCases(data) {
     this.testCases = <Array<Testcase>>data;
   }
 
-  create(){
-    console.log(this.challengeService.challenges.list);
-    if(Object.keys(this.challengeService.challenges.list).findIndex(value => value == this.challengeID) == -1 && this.challengeID!='') {
+  create() {
+    console.log(this.challengeService.challenges);
+    if (Object.keys(this.challengeService.challenges).findIndex(value => value == this.challengeID) == -1 && this.challengeID != '') {
       this.challengeService.put(<ChallengeEntityModel>{
         challengeID: this.challengeID,
         ownerID: this.userService.user.uid,
@@ -48,9 +48,9 @@ export class CreateFormComponent implements OnInit {
         testCases: this.testCases
       });
     }
-    else{
-      this.snackBar.open(this.challengeID+" has existed",null,{
-        duration:1000
+    else {
+      this.snackBar.open(this.challengeID + " has existed", null, {
+        duration: 1000
       });
     }
   }

@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CreateFormComponent} from './create-form/create-form.component';
+import { CreateFormComponent } from './create-form/create-form.component';
+import { ModifyFormComponent } from './modify-form/modify-form.component';
 
 const routes: Routes = [{
-  path:'',
-  component:CreateFormComponent,
-  pathMatch:'full'
-}];
+  path: '',
+  component: CreateFormComponent,
+  pathMatch: 'full'
+},
+{
+  path: 'modify',
+  component: ModifyFormComponent,
+  pathMatch: 'full'
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
