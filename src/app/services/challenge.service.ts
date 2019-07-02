@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Fetch, Put, FetchOwn, Update } from '../states/actions/challenge.action';
 import { ChallengeEntityModel } from '../states/models/challenge.entity.model';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ChallengeService {
   public challenges$: Observable<Challenge>;
   public challenges: Array<Challenge>;
 
-  constructor(private store: Store<IAppState>, private db: AngularFireDatabase) {
+  constructor(private store: Store<IAppState>, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
     this.challenges$ = store.select('challenges');
     this.challenges$.subscribe(value => {
 
@@ -43,11 +44,16 @@ export class ChallengeService {
   }
 
   public delete(id: string) {
-    this.db.object("challenges/" + id).remove().then(() => {
-      this.onUpdateResult(id + " was deleted");
-    }).catch((err) => {
-      this.onUpdateResult("Cannot delete " + id);
-    })
+    if (this.afAuth.auth.currentUser != null) {
+      this.db.object("challenges/" + id).remove().then(() => {
+        this.onUpdateResult(id + " was deleted");
+      }).catch((err) => {
+        this.onUpdateResult("Cannot delete " + id);
+      })
+    }
+    else {
+      this.onUpdateResult("Permission denied");
+    }
   }
 
   public onPutResult: (status: string) => void;
