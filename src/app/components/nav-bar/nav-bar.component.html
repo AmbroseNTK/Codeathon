@@ -2,14 +2,13 @@
   <img width="100" src="./assets/logo.png" />
   <div style="margin-left: 20px;">
     <button mat-button routerLink="/explore">Explore</button>
-    <button mat-button>Fight</button>
+    <button mat-button>Competition</button>
     <button mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
     <mat-menu #challengeMenu="matMenu">
       <button mat-menu-item routerLink="/create-challenge">Create</button>
       <button mat-menu-item routerLink="/create-challenge/modify">Edit</button>
-      <button mat-menu-item>View result</button>
     </mat-menu>
-    <button mat-button>History</button>
+    <button mat-button>Profile</button>
   </div>
 
   <span class="example-spacer"></span>

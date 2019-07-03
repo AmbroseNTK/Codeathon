@@ -104,7 +104,8 @@ export class CodingComponent implements OnInit {
   }
 
   canView() {
-    return true;
+
+    return this.challenge.canViewSolution;
   }
 
   hasLeaderboard() {

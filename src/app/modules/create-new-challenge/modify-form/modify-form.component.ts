@@ -3,6 +3,8 @@ import { ChallengeService } from '../../../services/challenge.service';
 import { Challenge } from '../../../states/models/challenge.model';
 import { Testcase } from '../../../states/models/testcase.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-modify-form',
@@ -16,7 +18,11 @@ export class ModifyFormComponent implements OnInit {
   }
   testCases: Array<Testcase> = new Array<Testcase>();
 
-  constructor(public challengeService: ChallengeService, public snackBar: MatSnackBar) {
+  retypedID = "";
+
+  canViewSolution = false;
+
+  constructor(public challengeService: ChallengeService, public snackBar: MatSnackBar, public matDialog: MatDialog) {
     challengeService.fetchOwn();
   }
 
@@ -45,7 +51,10 @@ export class ModifyFormComponent implements OnInit {
   }
 
   delete() {
-    this.challengeService.delete(this.selectedChallenge['challengeID']);
+    //this.challengeService.delete(this.selectedChallenge['challengeID']);
+    this.matDialog.open(DeleteConfirmationComponent, {
+      data: { id: this.selectedChallenge['challengeID'] }
+    })
   }
 
 }

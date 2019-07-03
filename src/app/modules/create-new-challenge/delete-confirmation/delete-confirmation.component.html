@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Delete {{data['id']}}?</h1>
+<div mat-dialog-content>
+  <p>Retype challenge id to delete</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="id">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="id==data['id']" mat-raised-button cdkFocusInitial color="warn" (click)="delete()">Delete</button>
+</div>

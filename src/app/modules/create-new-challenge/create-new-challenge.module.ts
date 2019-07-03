@@ -14,9 +14,12 @@ import { TestcasesTableComponent } from './testcases-table/testcases-table.compo
 import { FormsModule } from '@angular/forms';
 import { ModifyFormComponent } from './modify-form/modify-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [CreateFormComponent, TestcasesTableComponent, ModifyFormComponent],
+  declarations: [CreateFormComponent, TestcasesTableComponent, ModifyFormComponent, DeleteConfirmationComponent],
   imports: [
     CommonModule,
     CreateNewChallengeRoutingModule,
@@ -28,7 +31,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    FormsModule
-  ]
+    MatCheckboxModule,
+    FormsModule,
+    MatDialogModule
+  ],
+  entryComponents: [DeleteConfirmationComponent]
 })
 export class CreateNewChallengeModule { }

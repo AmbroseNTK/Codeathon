@@ -27,10 +27,11 @@ export class TestcasesTableComponent implements OnInit {
   dataSource: MatTableDataSource<Testcase>;
   input: string;
   output: string;
+  isPublic: boolean = false;
   selection: number;
   isSelected: boolean = false;
 
-  displayedColumns: string[] = ['id', 'input', 'output', 'select'];
+  displayedColumns: string[] = ['id', 'input', 'output', 'isPublic', 'select'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -51,7 +52,8 @@ export class TestcasesTableComponent implements OnInit {
     this.data.push({
       id: this.dataSource.data.length + 1,
       input: this.input,
-      output: this.output
+      output: this.output,
+      isPublic: this.isPublic
     });
     this.reload();
   }
@@ -69,11 +71,13 @@ export class TestcasesTableComponent implements OnInit {
     console.log(this.selection);
     this.input = this.dataSource.data[this.selection].input;
     this.output = this.dataSource.data[this.selection].output;
+    this.isPublic = this.dataSource.data[this.selection].isPublic;
   }
 
   public update() {
     this.data[this.selection].input = this.input;
     this.data[this.selection].output = this.output;
+    this.data[this.selection].isPublic = this.isPublic;
     this.reload();
   }
 
