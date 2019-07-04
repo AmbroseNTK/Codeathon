@@ -29,6 +29,7 @@ import {MarkdownModule} from 'ngx-markdown';
 import {configReducer} from './states/reducers/config.reducer';
 import {ConfigEffect} from './states/effects/config.effect';
 import {HttpClientModule} from '@angular/common/http';
+import { PersonalModule } from './modules/personal/personal.module';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     MarkdownModule.forRoot({}),
-    HttpClientModule
+    HttpClientModule,
+    PersonalModule
   ],
   providers: [],
   exports: [

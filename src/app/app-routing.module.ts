@@ -18,6 +18,10 @@ const routes: Routes = [{
   loadChildren: () => import('./modules/workspace/workspace.module').then(m => m.WorkspaceModule)
 },
 {
+  path: 'personal',
+  loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule)
+},
+{
   path: '',
   redirectTo: 'explore',
   pathMatch: 'full'
