@@ -1,18 +1,18 @@
-<mat-toolbar [class.mat-elevation-z6]="true">
-  <img width="100" src="./assets/logo.png" />
+<mat-toolbar [class.mat-elevation-z6]="true" color="primary">
+  <img width="70" src="./assets/logo-white.svg" />
   <div style="margin-left: 20px;">
     <button mat-button routerLink="/explore">Explore</button>
     <button mat-button>Competition</button>
-    <button mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
+    <button *ngIf="afAuth.auth.currentUser!=null" mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
     <mat-menu #challengeMenu="matMenu">
       <button mat-menu-item routerLink="/create-challenge">Create</button>
       <button mat-menu-item routerLink="/create-challenge/modify">Edit</button>
     </mat-menu>
-    <button mat-button routerLink='/personal'>Personal</button>
+    <button *ngIf="afAuth.auth.currentUser!=null" mat-button routerLink='/personal'>Personal</button>
   </div>
 
   <span class="example-spacer"></span>
-  <h4 style="size: 2vw;" *ngIf="afAuth.auth.currentUser!=null">{{afAuth.auth.currentUser.displayName}}</h4>
+  <h4 style="size: 2vw;color:white;" *ngIf="afAuth.auth.currentUser!=null">{{afAuth.auth.currentUser.displayName}}</h4>
   <button mat-icon-button color="accent" routerLink="/login">
     <mat-icon aria-label="Example icon-button with a heart icon">account_circle</mat-icon>
   </button>

@@ -1,10 +1,22 @@
 <div>
-  <div class="mat-elevation-z8" style="margin:10px;">
+  <div *ngIf="data.length==0" class="lds-roller"
+    style="display: flex; align-content: center; justify-content: center; width: 100%; margin-top: 20%;">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div *ngIf="data.length!=0" class="mat-elevation-z8" style="margin:10px;">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
     </mat-form-field>
   </div>
-  <div class="mat-elevation-z8" style="margin: 10px;">
+  <div *ngIf="data.length!=0" class="mat-elevation-z8" style="margin: 10px;">
+
     <table mat-table [dataSource]="dataSource" matSort style="width: 100%;">
 
       <ng-container matColumnDef="challengeID">
@@ -33,6 +45,7 @@
       </tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" style="background: #00c853;color:white;">
+    </mat-paginator>
   </div>
 </div>
