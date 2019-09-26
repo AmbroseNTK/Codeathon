@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
   path: 'login',
@@ -7,7 +8,8 @@ const routes: Routes = [{
 },
 {
   path: 'create-challenge',
-  loadChildren: () => import('./modules/create-new-challenge/create-new-challenge.module').then(m => m.CreateNewChallengeModule)
+  loadChildren: () => import('./modules/create-new-challenge/create-new-challenge.module').then(m => m.CreateNewChallengeModule),
+  canActivate: [AuthGuard]
 },
 {
   path: 'explore',
