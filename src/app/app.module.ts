@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,21 +14,21 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {userReducer} from './states/reducers/user.reducer';
-import {EffectsModule} from '@ngrx/effects';
-import {UserEffect} from './states/effects/user.effect';
-import {ChallengeEffect} from './states/effects/challenge.effect';
-import {challengeReducer} from './states/reducers/challenge.reducer';
-import {MarkdownModule} from 'ngx-markdown';
-import {configReducer} from './states/reducers/config.reducer';
-import {ConfigEffect} from './states/effects/config.effect';
-import {HttpClientModule} from '@angular/common/http';
+import { userReducer } from './states/reducers/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffect } from './states/effects/user.effect';
+import { ChallengeEffect } from './states/effects/challenge.effect';
+import { challengeReducer } from './states/reducers/challenge.reducer';
+import { MarkdownModule } from 'ngx-markdown';
+import { configReducer } from './states/reducers/config.reducer';
+import { ConfigEffect } from './states/effects/config.effect';
+import { HttpClientModule } from '@angular/common/http';
 import { PersonalModule } from './modules/personal/personal.module';
 
 @NgModule({
@@ -50,9 +50,9 @@ import { PersonalModule } from './modules/personal/personal.module';
     StoreModule.forRoot({
       user: userReducer,
       challenges: challengeReducer,
-      config:configReducer
+      config: configReducer
     }),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
       UserEffect,
       ChallengeEffect,

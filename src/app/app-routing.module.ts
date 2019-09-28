@@ -27,7 +27,8 @@ const routes: Routes = [{
   path: '',
   redirectTo: 'explore',
   pathMatch: 'full'
-}
+},
+  { path: 'modules/Category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule) }
 ];
 
 @NgModule({

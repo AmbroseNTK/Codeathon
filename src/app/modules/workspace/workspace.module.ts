@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WorkspaceRoutingModule } from './workspace-routing.module';
-import {CodingComponent} from './coding/coding.component';
+import { CodingComponent } from './coding/coding.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -13,10 +13,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import {MarkdownModule} from 'ngx-markdown';
-import {CovalentCodeEditorModule} from '@covalent/code-editor';
-import {FormsModule} from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
+import { CovalentCodeEditorModule } from '@covalent/code-editor';
+import { FormsModule } from '@angular/forms';
 import { SolutionDialogComponent } from './solution-dialog/solution-dialog.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [CodingComponent, SolutionDialogComponent],
@@ -35,8 +36,9 @@ import { SolutionDialogComponent } from './solution-dialog/solution-dialog.compo
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
-  entryComponents:[SolutionDialogComponent]
+  entryComponents: [SolutionDialogComponent]
 })
 export class WorkspaceModule { }

@@ -8,11 +8,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TimeToDatePipe } from './pipes/time-to-date.pipe';
 
 @NgModule({
-  declarations: [ChallengeListComponent],
+  declarations: [ChallengeListComponent, TimeToDatePipe],
   exports: [
-    ChallengeListComponent
+    ChallengeListComponent,
+    TimeToDatePipe
   ],
   imports: [
     CommonModule,

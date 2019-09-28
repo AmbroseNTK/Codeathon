@@ -11,7 +11,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SolutionDialogComponent } from '../solution-dialog/solution-dialog.component';
 import { catchError, map } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-coding',
   templateUrl: './coding.component.html',
