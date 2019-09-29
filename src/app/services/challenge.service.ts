@@ -17,6 +17,8 @@ export class ChallengeService {
   public challenges: Array<Challenge>;
 
   constructor(private store: Store<IAppState>, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+
+
     this.challenges$ = store.select('challenges');
     this.challenges$.subscribe(value => {
 

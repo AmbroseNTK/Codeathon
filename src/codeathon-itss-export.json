@@ -1,0 +1,3335 @@
+{
+  "categories": {
+    "CSLT": {
+      "name": "Cơ sở lập trình",
+      "description": "Cung cấp kiến thức cơ bản cần thiết cho mỗi lập trình viên. Hãy thực hiện phần này trước",
+      "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23",
+      "imageUrl": "",
+      "challengeList": [
+        "CSLT001",
+        "CSLT_Loop_001",
+        "CSLT002"
+      ]
+    }
+  },
+  "challenges": {
+    "CSLT001": {
+      "canViewSolution": false,
+      "challengeID": "CSLT001",
+      "details": "Viết chương trình nhập vào một mảng số nguyên có kích thước tùy ý, in ra mảng đã đảo ngược vị trí các phần tử trong mảng theo đối xứng tâm.",
+      "history": {
+        "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+          "challengeID": "CSLT001",
+          "code": "data = raw_input()\r\n\r\nreversed = \"\"\r\n\r\nfor ch in data:\r\n    reversed = ch + reversed\r\n\r\nprint(reversed)",
+          "date": 1569070384300,
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.06,
+          "finished": 2,
+          "index": 1,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "1 2 6 3 4 5 9 2",
+              "output": "2 9 5 4 3 6 2 1"
+            },
+            {
+              "id": 2,
+              "input": "3 5 1 2 6 9 7 4 8",
+              "output": "8 4 7 9 6 2 1 5 3"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        }
+      },
+      "ownerID": "tYZS4bwQAnP4giOH0hGmDaV0BE23",
+      "sampleInput": "1 2 6 3 4 5 9 2\n3 5 1 2 6 9 7 4 8",
+      "sampleOutput": "2 9 5 4 3 6 2 1 \n8 4 7 9 6 2 1 5 3 ",
+      "shortDescription": "Đảo ngược mảng",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "1 2 6 3 4 5 9 2",
+          "output": "2 9 5 4 3 6 2 1"
+        },
+        {
+          "id": 2,
+          "input": "3 5 1 2 6 9 7 4 8",
+          "output": "8 4 7 9 6 2 1 5 3"
+        }
+      ],
+      "title": "Đảo ngược nội dung mảng số nguyên"
+    },
+    "CSLT_Loop_001": {
+      "canViewSolution": false,
+      "challengeID": "CSLT_Loop_001",
+      "details": "Nhập vào số kWh tiêu thụ của gia đình bạn, chương trình sẽ xuất ra giá tiền điện cần phải đóng theo bảng giá bậc thang 2019 như sau:\nBậc 1: 0-50 Giá: 1678 (VNĐ/kWh)\nBậc 2: 51-100 Giá: 1734 (VNĐ/kWh)\nBậc 3: 101-200 Giá: 2014 (VNĐ/kWh)\nBậc 4: 201-300 Giá: 2536 (VNĐ/kWh)\nBậc 5: 301-400 Giá: 2834 (VNĐ/kWh)\nBậc 6: 401 trở lên; Giá: 2927 (VNĐ/kWh)\nTổng tiền điện của tháng còn phải có VAT 10%.",
+      "history": {
+        "6rCAm22b6yfG8DAowZxAgDvYui33": {
+          "challengeID": "CSLT_Loop_001",
+          "code": "#include <stdio.h>\r\nint main()\r\n{\r\n    int lower[6]={0,51,101,201,301,401};\r\n    int upper[6]={50,100,200,300,400,100000000};\r\n    float cost[6]={1678,1734,2014,2536,2834,2927};\r\n    int n;\r\n    scanf(\"%d\",&n);\r\n    float t=0, sum=0;\r\n    int i=0;\r\n    do\r\n    {\r\n        if(n<lower[i])  t = 0;\r\n        else\r\n            if(n<upper[i])\r\n                t = (n - lower[i] + 1)*cost[i];\r\n            else\r\n                t = (upper[i] - lower[i] + 1)*cost[i];\r\n        sum += t;\r\n        i++;\r\n    }while(t!=0||i<6);\r\n    sum = sum * 1.1;\r\n    printf(\"%.1f\",sum);\r\n    return 0;\r\n}",
+          "date": 1562575831106,
+          "displayName": "Huan Phan",
+          "email": "huanpdt@gmail.com",
+          "execTime": 9.54,
+          "finished": 5,
+          "index": 4,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "101",
+              "isPublic": true,
+              "output": "191721.2"
+            },
+            {
+              "id": 2,
+              "input": "246",
+              "isPublic": true,
+              "output": "539367.4"
+            },
+            {
+              "id": 3,
+              "input": "323",
+              "isPublic": true,
+              "output": "761706.0"
+            },
+            {
+              "id": 4,
+              "input": "401",
+              "isPublic": true,
+              "output": "1004965.5"
+            },
+            {
+              "id": 5,
+              "input": "662",
+              "isPublic": true,
+              "output": "1845307.2"
+            }
+          ],
+          "uid": "6rCAm22b6yfG8DAowZxAgDvYui33"
+        }
+      },
+      "ownerID": "6rCAm22b6yfG8DAowZxAgDvYui33",
+      "sampleInput": "105",
+      "sampleOutput": "198737.0",
+      "shortDescription": "Giá điện 2019",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "101",
+          "isPublic": true,
+          "output": "189875.4"
+        },
+        {
+          "id": 2,
+          "input": "246",
+          "isPublic": true,
+          "output": "537521.6"
+        },
+        {
+          "id": 3,
+          "input": "323",
+          "isPublic": true,
+          "output": "759860.2"
+        },
+        {
+          "id": 4,
+          "input": "401",
+          "isPublic": true,
+          "output": "1003119.7"
+        },
+        {
+          "id": 5,
+          "input": "662",
+          "isPublic": true,
+          "output": "1843461.4"
+        }
+      ],
+      "title": "Tính tiền điện sinh hoạt 2019"
+    },
+    "CSLT_Loop_002": {
+      "canViewSolution": true,
+      "challengeID": "CSLT_Loop_002",
+      "details": "Áp dụng kỹ thuật cơ bản chuyển đổi cơ số từ hệ 10 sang hệ 2:\nB1. Chia số hệ 10 cho 2\nB2. Nếu thương của B1 khác 0 thì lặp lại B1 với số bị chia là thương của B1 trước đó.\nB3. Ngược lại thì dừng và kết quả là dãy phần dư của các B1 được viết theo chiều ngược lại\nVí dụ: đổi số 11 sang nhị phân:\n11 : 2 =  5 dư 1\n5   : 2 = 2 dư 1\n2   : 2 = 1 dư 0\n1   : 2 = 0 dư 1\nKết quả là dãy: 1011",
+      "history": {
+        "6rCAm22b6yfG8DAowZxAgDvYui33": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "#include \"stdio.h\"\r\nvoid daoChuoi(char *s, char len)\r\n{\r\n    char low=0, high = len-1, temp;\r\n    while(low < high)\r\n    {\r\n        temp = s[low];\r\n        s[low] = s[high];\r\n        s[high] = temp;\r\n        low ++;\r\n        high --;\r\n    }\r\n    s[len] = '\\0';\r\n}\r\nint main()\r\n{\r\n    unsigned int n;\r\n    char s[11]=\"\";\r\n    char count=0;\r\n    unsigned int remain, result;\r\n    scanf(\"%u\",&n);\r\n    result = n;\r\n    do{\r\n        remain = result % 2;\r\n        result = result / 2;\r\n        s[count] = remain + 48; //'0' = 48, '1' = 49\r\n        count++;\r\n    }while(result !=0);\r\n    daoChuoi(s,count);\r\n    printf(\"%s\",s);\r\n    return 0;\r\n}",
+          "date": 1569650758677,
+          "displayName": "Huan Phan",
+          "email": "huanpdt@gmail.com",
+          "execTime": 3.75,
+          "finished": 5,
+          "index": 4,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "6rCAm22b6yfG8DAowZxAgDvYui33"
+        },
+        "RmLVQKe16PhSYa4lyAxHelee5ek1": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "print(bin(input())[2:])",
+          "date": 1569670944158,
+          "displayName": "KIET Nguyen Tuan",
+          "email": "kiet.nt2392@sinhvien.hoasen.edu.vn",
+          "execTime": 0.13999999999999999,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "RmLVQKe16PhSYa4lyAxHelee5ek1"
+        },
+        "SmcaFlZ96cUFVevYTBMxWLZ62wN2": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "import java.util.Scanner;\r\n\r\npublic class Program {\r\n    public static void main(String[]args) {\r\n        Scanner sc = new Scanner(System.in);\r\n        int n = sc.nextInt();\r\n        while (n > 0) {\r\n            System.out.println(Integer.toBinaryString(n));\r\n            break;\r\n        }\r\n    }\r\n}",
+          "date": 1569658891720,
+          "displayName": "Hoài Gia Linh Nguyễn",
+          "email": "nhglinh263@gmail.com",
+          "execTime": 37.63,
+          "finished": 5,
+          "index": 4,
+          "languageID": 8,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "SmcaFlZ96cUFVevYTBMxWLZ62wN2"
+        },
+        "m8Dct8nOSgPnGRwGruuuYonbGhs1": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "x = int(input())\r\nprint(bin(x)[2:])",
+          "date": 1569670794889,
+          "displayName": "TAM Nguyen Minh",
+          "email": "tam.nm2494@sinhvien.hoasen.edu.vn",
+          "execTime": 0.14,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "m8Dct8nOSgPnGRwGruuuYonbGhs1"
+        },
+        "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "dec = input()\r\n\r\nbin = \"\"\r\n\r\nwhile True: \r\n    bin = str(dec%2) + bin\r\n    dec /= 2\r\n    if dec==0:\r\n        break\r\n\r\nprint(bin)",
+          "date": 1569651554089,
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.16,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        }
+      },
+      "ownerID": "6rCAm22b6yfG8DAowZxAgDvYui33",
+      "sampleInput": "11",
+      "sampleOutput": "1011",
+      "shortDescription": "Lập trình chuyển đổi một số nguyên dương hệ 10 sang hệ nhị phân",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "11",
+          "isPublic": true,
+          "output": "1011"
+        },
+        {
+          "id": 2,
+          "input": "100",
+          "isPublic": true,
+          "output": "1100100"
+        },
+        {
+          "id": 3,
+          "input": "1023",
+          "isPublic": true,
+          "output": "1111111111"
+        },
+        {
+          "id": 4,
+          "input": "1",
+          "isPublic": true,
+          "output": "1"
+        },
+        {
+          "id": 5,
+          "input": "512",
+          "isPublic": true,
+          "output": "1000000000"
+        }
+      ],
+      "title": "Chuyển đổi cơ số hệ 10 sang hệ 2"
+    },
+    "LTHDH0801": {
+      "challengeID": "LTHDH0801",
+      "details": "Lập trình thực thi thuật toán First fit theo dữ liệu input và xuất kết quả theo mô tả sau đây:\ninput:\n4 //4 vùng nhớ\n600 500 200 300 //kích thước các vùng nhớ\n4 //4 tiến trình\n212 417 112 426 //yêu cầu của các tiến trình\n\nFirst fit - output:\n4 //4 tiến trình\n0 1 0 -1 //vị trí cấp phát từng tiến trình\n4 //4 vùng nhớ\n276 83 200 300 //kích thước còn lại các vùng nhớ\n",
+      "ownerID": "6rCAm22b6yfG8DAowZxAgDvYui33",
+      "sampleInput": "4\n600 500 200 300\n4\n212 417 112 426",
+      "sampleOutput": "4\n0 1 0 -1\n4\n276 83 200 300",
+      "shortDescription": "First fit",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "4\n600 500 200 300\n4\n212 417 112 426",
+          "output": "4\n0 1 0 -1\n4\n276 83 200 300"
+        },
+        {
+          "id": 2,
+          "input": "5\n100 500 200 300 600\n4\n212 417 112 426",
+          "output": "4\n1 4 1 -1\n5\n100 176 200 300 183"
+        },
+        {
+          "id": 3,
+          "input": "5\n200 400 600 300 500\n4\n220 250 550 320",
+          "output": "4\n1 2 -1 2\n5\n200 180 30 300 500"
+        }
+      ],
+      "title": "Thuật toán cấp phát bộ nhớ First fit"
+    },
+    "LTHDH0801v2": {
+      "challengeID": "LTHDH0801v2",
+      "details": "Lập trình thực thi thuật toán First fit theo dữ liệu input và xuất kết quả theo mô tả sau đây:\ninput:\n4 //4 vùng nhớ\n600 500 200 300 //kích thước các vùng nhớ\n4 //4 tiến trình\n212 417 112 426 //yêu cầu của các tiến trình\n\nFirst fit - output:\n4 //4 tiến trình\n0 1 0 -1 //vị trí cấp phát từng tiến trình\n4 //4 vùng nhớ\n276 83 200 300 //kích thước còn lại các vùng nhớ ",
+      "history": {
+        "d8Lsq2W4J4cFqmQiQ06QWi7IvtB2": {
+          "challengeID": "LTHDH0801v2",
+          "code": "#include <iostream>\r\n#include <malloc.h>\r\nusing namespace std;\r\n\r\nint *getProcess(int numberOfProcess)\r\n{\r\n    int *process = new int[numberOfProcess + 1];\r\n    int key;\r\n    for (int count = 0; count < numberOfProcess; count++)\r\n    {\r\n        do\r\n        {\r\n            cin >> key;\r\n        } while (key <= 0);\r\n        process[count] = key;\r\n    }\r\n    process[numberOfProcess] = -1;\r\n    return process;\r\n}\r\n\r\nint getNumber()\r\n{\r\n    int number = 0;\r\n    cin >> number;\r\n    return number;\r\n}\r\n\r\nint *getMemories(int numberOfMemories)\r\n{\r\n    int *memory = new int[numberOfMemories + 1];\r\n    int key;\r\n    for (int count = 0; count < numberOfMemories; count++)\r\n    {\r\n        do\r\n        {\r\n            cin >> key;\r\n        } while (key <= 0);\r\n        memory[count] = key;\r\n    }\r\n    memory[numberOfMemories] = -1;\r\n    return memory;\r\n}\r\n\r\nvoid readMemories(int *memories)\r\n{\r\n    for (int order = 0; memories[order] != -1; order++)\r\n    {\r\n        if (order == 0) {\r\n            cout << memories[order];\r\n        }\r\n        else cout << \" \" << memories[order];\r\n    }\r\n}\r\n\r\nvoid generateFCFS(int *process, int *memories) {\r\n    int * headProcess = process;\r\n    while(*process != -1) {\r\n        bool isAllocated = false;\r\n        for (int currentMemoryIndex = 0; memories[currentMemoryIndex] != -1; currentMemoryIndex++) {\r\n            if (memories[currentMemoryIndex] >= *process) {\r\n                if (process == headProcess) \r\n                    cout << currentMemoryIndex;\r\n                else \r\n                    cout << \" \" << currentMemoryIndex;\r\n                memories[currentMemoryIndex] -= *process;\r\n                isAllocated = true;\r\n                break;\r\n            }\r\n        }\r\n        if (!isAllocated) {\r\n            cout<< \" -1\";\r\n        }\r\n        process = process + 1;\r\n    }\r\n    cout << \" \";\r\n}\r\n\r\nint main()\r\n{\r\n    int numberMemories = getNumber();\r\n    int *memories = getMemories(numberMemories);\r\n    int numberProcess = getNumber();\r\n    int *process = getProcess(numberProcess);\r\n    cout << numberProcess << \" \";\r\n    generateFCFS(process, memories);\r\n    cout << numberMemories << \" \";\r\n    readMemories(memories);\r\n    return 0;\r\n}",
+          "date": 1561178927442,
+          "displayName": "Nhật Minh Phạm Đỗ",
+          "email": "pdn.minh1999@gmail.com",
+          "execTime": 1.24,
+          "finished": 3,
+          "index": 2,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "4 700 600 300 400 4 212 417 112 426\n",
+              "output": "4 0 0 1 1 4 71 62 300 400"
+            },
+            {
+              "id": 2,
+              "input": "5 100 500 200 300 600 4 212 417 112 426\n",
+              "output": "4 1 4 1 -1 5 100 176 200 300 183"
+            },
+            {
+              "id": 3,
+              "input": "5 200 400 600 300 500 4 220 250 550 320\n",
+              "output": "4 1 2 -1 2 5 200 180 30 300 500"
+            }
+          ],
+          "uid": "d8Lsq2W4J4cFqmQiQ06QWi7IvtB2"
+        }
+      },
+      "ownerID": "6rCAm22b6yfG8DAowZxAgDvYui33",
+      "sampleInput": "4\n600 500 200 300\n4\n212 417 112 426",
+      "sampleOutput": "4\n0 1 0 -1\n4\n276 83 200 300",
+      "shortDescription": "First fit ",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "4 700 600 300 400 4 212 417 112 426\n",
+          "output": "4 0 0 1 1 4 71 62 300 400"
+        },
+        {
+          "id": 2,
+          "input": "5 100 500 200 300 600 4 212 417 112 426\n",
+          "output": "4 1 4 1 -1 5 100 176 200 300 183"
+        },
+        {
+          "id": 3,
+          "input": "5 200 400 600 300 500 4 220 250 550 320\n",
+          "output": "4 1 2 -1 2 5 200 180 30 300 500"
+        }
+      ],
+      "title": "Thuật toán cấp phát bộ nhớ First fit "
+    },
+    "LTHDH0802": {
+      "challengeID": "LTHDH0802",
+      "details": "Lập trình thực thi thuật toán Best fit theo dữ liệu input và xuất kết quả theo mô tả sau đây:\ninput:\n4 //4 vùng nhớ\n700 600 300 400 //kích thước các vùng nhớ\n4 //4 tiến trình\n212 417 112 426 //yêu cầu của các tiến trình\n\nBest fit - output:\n4 //4 tiến trình\n2 1 1 0 //vị trí cấp phát từng tiến trình\n4 //4 vùng nhớ\n274 71 88 400 //kích thước còn lại các vùng nhớ\n",
+      "ownerID": "6rCAm22b6yfG8DAowZxAgDvYui33",
+      "sampleInput": "4\n700 600 300 400\n4\n212 417 112 426",
+      "sampleOutput": "4\n2 1 1 0\n4\n274 71 88 400",
+      "shortDescription": "Best fit",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "4\n700 600 300 400\n4\n212 417 112 426",
+          "output": "4\n2 1 1 0\n4\n274 71 88 400"
+        },
+        {
+          "id": 2,
+          "input": "5\n100 500 200 300 600\n4\n212 417 112 426",
+          "output": "4\n3 1 2 4\n5\n100 83 88 88 174"
+        },
+        {
+          "id": 3,
+          "input": "5\n200 400 600 300 500\n4\n220 250 550 320",
+          "output": "4\n3 1 2 4\n5\n200 150 50 80 180"
+        }
+      ],
+      "title": "Thuật toán cấp phát bộ nhớ Best fit"
+    },
+    "LTHDH0901": {
+      "challengeID": "LTHDH0901",
+      "details": "Cài đặt thuật toán thay thế trang FIFO với thông tin nhập vào gồm chuỗi tham chiếu trang (kết thúc bằng -1) và số frame được cấp.\nInput:\n2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1 //chuỗi 15 tham chiếu trang, kết thúc bằng -1\n3 //3 frame vật lý cho trước\nOut put:\n2 2 -1 -1 // tham chiếu page 2, giá trị lần lượt của 3 frame là 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 5 3 1\n2 5 2 1\n4 5 2 4\n5 5 2 4\n3 3 2 4\n2 3 2 4\n5 3 5 4\n2 3 5 2\n3 3 5 2\n4 4 5 2\n2 4 5 2",
+      "ownerID": "",
+      "sampleInput": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1\n3",
+      "sampleOutput": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 5 3 1\n2 5 2 1\n4 5 2 4\n5 5 2 4\n3 3 2 4\n2 3 2 4\n5 3 5 4\n2 3 5 2\n3 3 5 2\n4 4 5 2\n2 4 5 2",
+      "shortDescription": "FIFO",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1\n3",
+          "output": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 5 3 1\n2 5 2 1\n4 5 2 4\n5 5 2 4\n3 3 2 4\n2 3 2 4\n5 3 5 4\n2 3 5 2\n3 3 5 2\n4 4 5 2\n2 4 5 2"
+        },
+        {
+          "id": 2,
+          "input": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 1 5 -1\n3",
+          "output": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 5 3 1\n2 5 2 1\n4 5 2 4\n5 5 2 4\n3 3 2 4\n2 3 2 4\n5 3 5 4\n2 3 5 2\n3 3 5 2\n4 4 5 2\n2 4 5 2\n1 4 1 2\n5 4 1 5"
+        },
+        {
+          "id": 3,
+          "input": "7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1 -1\n4",
+          "output": "7 7 -1 -1 -1\n0 7 0 -1 -1\n1 7 0 1 -1\n2 7 0 1 2\n0 7 0 1 2\n3 3 0 1 2\n0 3 0 1 2\n4 3 4 1 2\n2 3 4 1 2 \n3 3 4 1 2\n0 3 4 0 2\n3 3 4 0 2\n2 3 4 0 2\n1 3 4 0 1\n2 2 4 0 1\n0 2 4 0 1\n1 2 4 0 1\n7 2 7 0 1\n0 2 7 0 1\n1 2 7 0 1"
+        }
+      ],
+      "title": "Thuật toán thay thế trang FIFO"
+    },
+    "LTHDH0902": {
+      "challengeID": "LTHDH0902",
+      "details": "Cài đặt thuật toán thay thế trang LRU với thông tin nhập vào gồm chuỗi tham chiếu trang (kết thúc bằng -1) và số frame được cấp.\nInput:\n2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1 //chuỗi 15 tham chiếu trang, kết thúc bằng -1\n3 //3 frame vật lý cho trước\nOut put:\n2 2 -1 -1 // tham chiếu page 2, giá trị lần lượt của 3 frame là 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 2 5 1\n2 2 5 1\n4 2 5 4\n5 2 5 4\n3 3 5 4\n2 3 5 2\n5 3 5 2\n2 3 5 2\n3 3 5 2\n4 3 4 2\n2 3 4 2",
+      "ownerID": "",
+      "sampleInput": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1\n3",
+      "sampleOutput": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 2 5 1\n2 2 5 1\n4 2 5 4\n5 2 5 4\n3 3 5 4\n2 3 5 2\n5 3 5 2\n2 3 5 2\n3 3 5 2\n4 3 4 2\n2 3 4 2",
+      "shortDescription": "LRU",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 -1\n3",
+          "output": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 2 5 1\n2 2 5 1\n4 2 5 4\n5 2 5 4\n3 3 5 4\n2 3 5 2\n5 3 5 2\n2 3 5 2\n3 3 5 2\n4 3 4 2\n2 3 4 2"
+        },
+        {
+          "id": 2,
+          "input": "2 3 2 1 5 2 4 5 3 2 5 2 3 4 2 1 5 -1\n3",
+          "output": "2 2 -1 -1\n3 2 3 -1\n2 2 3 -1\n1 2 3 1\n5 5 3 1\n2 5 2 1\n4 5 2 4\n5 5 2 4\n3 3 2 4\n2 3 2 4\n5 3 5 4\n2 3 5 2\n3 3 5 2\n4 4 5 2\n2 4 5 2\n1 1 4 2\n5 1 5 2"
+        },
+        {
+          "id": 3,
+          "input": "7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1 -1\n4",
+          "output": "7 7 -1 -1 -1\n0 7 0 -1 -1\n1 7 0 1 -1\n2 7 0 1 2\n0 7 0 1 2\n3 3 0 1 2\n0 3 0 1 2\n4 3 0 4 2\n2 3 0 4 2 \n3 3 0 4 2\n0 3 0 4 2\n3 3 0 4 2\n2 3 0 4 2\n1 3 0 1 2\n2 3 0 1 2\n0 3 0 1 2\n1 3 0 1 2\n7 7 0 1 2\n0 7 0 1 2\n1 7 0 1 2"
+        }
+      ],
+      "title": "Thuật toán thay thế trang LRU"
+    },
+    "PRIME-BASIC": {
+      "challengeID": "PRIME-BASIC",
+      "details": "Nhập vào một số nguyên tố n (0<= n <= 9999999)\nNếu n là số nguyên tố thì in ra số 1. Ngược lại in ra 0",
+      "history": {
+        "4e3sHzUWJfeYNI7Jn7d1U0Oq3C02": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\n#include <string.h>\r\n#include <math.h>\r\nint isPrime()\r\n{\r\n    int number;\r\n   // do\r\n  //  {\r\n        //printf(\"Input number: \");\r\n        scanf(\"%d\", &number);\r\n        //if (number < 0)\r\n        //    printf(\"Wrong format, just input number. Please check your number again!\\n\");\r\n   // } while (number < 0);\r\n    if (number == 0 || number == 1)\r\n        return 0;\r\n    for (int i = 2; i < sqrt(number); i++)\r\n    {\r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\nint main()\r\n{\r\n    printf(\"%d\\n\", isPrime());\r\n}",
+          "displayName": "ITSS VN",
+          "email": "itssvn.com@gmail.com",
+          "execTime": 4.26,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "4e3sHzUWJfeYNI7Jn7d1U0Oq3C02"
+        },
+        "6n9ZHlIciUVypWZ7jlKzBLZxqG92": {
+          "challengeID": "PRIME-BASIC",
+          "code": "process.stdin.once('data', (number) => {\r\n    console.log(isPrime(number) ? 1 : 0);\r\n    process.exit();\r\n})\r\n\r\nfunction isPrime(number) {\r\n    if (number < 2) {\r\n        return false;\r\n    }\r\n    if (number == 2) {\r\n        return true;\r\n    }\r\n    for (let i = 2; i <= Math.sqrt(number); i++) {\r\n        if (number % i == 0) {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n}\r\n\r\n",
+          "displayName": "MINH.PDN2259 2172259",
+          "email": "minh.pdn2259@sinhvien.hoasen.edu.vn",
+          "execTime": 22.36,
+          "finished": 11,
+          "index": 10,
+          "languageID": 4,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "6n9ZHlIciUVypWZ7jlKzBLZxqG92"
+        },
+        "At38w0Iu24VbJ9UhXc1tGfNJkJ83": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\nint KTraSNT(int n){\r\n    if (n == 0 || n == 1)\r\n    return 0;\r\n    if (n == 2)\r\n    return 1;\r\n\r\n    for (int i=2; i*i<n; i++)\r\n    {\r\n        if (n%i == 0)\r\n        return 0;\r\n    }\r\n    return 1;\r\n}\r\nint main(){\r\n    int n;\r\n    scanf(\"%d\", &n);\r\n    printf(\"%d\", KTraSNT(n));\r\n    return 0;\r\n}",
+          "displayName": "THUC.ND1609 2171609",
+          "email": "thuc.nd1609@sinhvien.hoasen.edu.vn",
+          "execTime": 2.33,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "At38w0Iu24VbJ9UhXc1tGfNJkJ83"
+        },
+        "P90xn7FTSUcinaXilHYsaLXEpdX2": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\n\n\nint isPrime(int number)\n{\n\tif(number == 1 || number == 0)\n\t{\n\t\treturn 0;\n\t}\n\tfor(int i = 2; i <= number - 1; i++)\n\t{\n\t\tif(number % i == 0)\n\t\t{\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n\n}\n\nint main(void)\n{\n\tint number;\n\tscanf(\"%d\",&number);\n\n\tint primeNumber = isPrime(number);\n\tif(primeNumber == 0)\n\t{\n\t\tprintf(\"0\");\n\t}\n\telse\n\t{\n\t\tprintf(\"1\");\n\t}\n}\n",
+          "displayName": "Dang Khuong Nguyen",
+          "email": "owlthres@gmail.com",
+          "execTime": 1.83,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "P90xn7FTSUcinaXilHYsaLXEpdX2"
+        },
+        "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif(number == 1 || number == 0)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor(int i = 2; i <= number - 1; i++)\r\n\t{\r\n\t\tif(number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main(void)\r\n{\r\n\tint number;\r\n\tscanf(\"%d\",&number);\r\n\r\n\tint primeNumber = isPrime(number);\r\n\tif(primeNumber == 0)\r\n\t{\r\n\t\tprintf(\"0\");\r\n\t}\r\n\telse\r\n\t{\r\n\t\tprintf(\"1\");\r\n\t}\r\n}\r\n",
+          "displayName": "Kiet Tuan",
+          "email": "nguyentuankiet23031998@gmail.com",
+          "execTime": 1.88,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13"
+        },
+        "RmpvH9ertQh7KvMVO6QxttJutXl1": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\n\r\nint isPrime(int num)\r\n{\r\n    if(num < 2) return 0;\r\n    for (int i = 2; i < num; i++)\r\n    {\r\n        if (!(num % i))\r\n            return 0;\r\n    }\r\n    return 1;\r\n}\r\n\r\nint main()\r\n{\r\n    int num;\r\n    scanf(\"%d\", &num);\r\n    printf(\"%d\", isPrime(num));\r\n    return 0;\r\n}",
+          "displayName": "Hieu Pham",
+          "email": "vanhieu1601@gmail.com",
+          "execTime": 1.7999999999999998,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "RmpvH9ertQh7KvMVO6QxttJutXl1"
+        },
+        "lCTslh3Ps3P6NCnxfH4Kckwn4fu2": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\r\n#define _CRT_SECURE_NO_WARNINGS\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif (number < 2)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor (int i = 2; i <= number - 1; i++)\r\n\t{\r\n\t\tif (number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main(void)\r\n{\r\n\tint number1 = 0;\r\n\tdo\r\n    {\r\n\t\tscanf(\"%d\", &number1);\r\n\t} while (number1 < 0);\r\n\r\n\tif (isPrime(number1) == 0)\r\n\t{\r\n\t\tprintf(\"0\\n\");\r\n\t}\r\n\telse\r\n\t{\r\n\t\tprintf(\"1\\n\");\r\n\t}\r\n}",
+          "displayName": "Trọng Huỳnh",
+          "email": "huynhtrong.09502@gmail.com",
+          "execTime": 1.9,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "lCTslh3Ps3P6NCnxfH4Kckwn4fu2"
+        },
+        "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+          "challengeID": "PRIME-BASIC",
+          "code": "process.stdin.once('data', (number) => {\r\n    console.log(isPrime(number) ? 1 : 0);\r\n    process.exit();\r\n})\r\n\r\nfunction isPrime(number) {\r\n    if (number < 2) {\r\n        return false;\r\n    }\r\n    if (number == 2) {\r\n        return true;\r\n    }\r\n    for (let i = 2; i*i <= number; i++) {\r\n        if (number % i == 0) {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n}\r\n\r\n",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 23.86,
+          "finished": 11,
+          "index": 10,
+          "languageID": 4,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        }
+      },
+      "ownerID": "",
+      "sampleInput": "3",
+      "sampleOutput": "1",
+      "shortDescription": "Cho một số nguyên tố, kiểm tra xem nó có phải số nguyên tố hay không?",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "0",
+          "output": "0"
+        },
+        {
+          "id": 2,
+          "input": "2",
+          "output": "1"
+        },
+        {
+          "id": 3,
+          "input": "3",
+          "output": "1"
+        },
+        {
+          "id": 4,
+          "input": "2267",
+          "output": "1"
+        },
+        {
+          "id": 5,
+          "input": "2731",
+          "output": "1"
+        },
+        {
+          "id": 6,
+          "input": "101693",
+          "output": "1"
+        },
+        {
+          "id": 7,
+          "input": "101692",
+          "output": "0"
+        },
+        {
+          "id": 8,
+          "input": "102233",
+          "output": "1"
+        },
+        {
+          "id": 9,
+          "input": "102232",
+          "output": "0"
+        },
+        {
+          "id": 10,
+          "input": "1008989",
+          "output": "1"
+        },
+        {
+          "id": 11,
+          "input": "1008988",
+          "output": "0"
+        }
+      ],
+      "title": "Kiểm tra số nguyên tố"
+    },
+    "PRIME-COUNT": {
+      "challengeID": "PRIME-COUNT",
+      "details": "Cho lần lượt m và n ( m < n và 0 <= m,n < 999999)\nHãy đếm xem có bao nhiêu số nguyên tố trong đoạn từ m đến n",
+      "history": {
+        "6n9ZHlIciUVypWZ7jlKzBLZxqG92": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include<stdio.h>\r\n#include<math.h>\r\n\r\nchar isPrime(int number)\r\n{\r\n    if (number < 2)\r\n    {\r\n        return 0;\r\n    }\r\n    if (number == 2)\r\n    {\r\n        return 1;\r\n    }\r\n    int sqnumber = sqrt(number);\r\n    for (int i = 2; i <= sqnumber; i++)\r\n    {\r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n\r\nint countPrime(int start, int end)\r\n{\r\n    int counter = 0;\r\n    for (int runner = start; runner <= end; runner ++)\r\n    {\r\n        if (isPrime(runner) == 1)\r\n        {\r\n            counter ++;\r\n        }\r\n    }\r\n    return counter;\r\n}\r\n\r\n// gcc prime.cpp -lstdc++ -lm\r\nint main()\r\n{\r\n    int m = 0, n = 0;\r\n    scanf(\"%d\\n%d\", &m, &n);\r\n    printf(\"%d\", countPrime(m, n));\r\n    return 0;\r\n}",
+          "displayName": "MINH.PDN2259 2172259",
+          "email": "minh.pdn2259@sinhvien.hoasen.edu.vn",
+          "execTime": 0.92,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "6n9ZHlIciUVypWZ7jlKzBLZxqG92"
+        },
+        "BoL7h7wbKUUqpT299C0OF4URTiq1": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"iostream\"\r\n#include \"stdio.h\"\r\n#include \"math.h\"\r\nusing namespace std;\r\n\r\n// Ham kiem tr so nguyen to\r\nint Kiemtrasonguyento(int n)// n la so tu nhien\r\n{\r\n\tif (n < 2)\r\n\t{\r\n\t\treturn 0; // 0 == false\r\n\t}\r\n\tif (n == 1) \r\n\t{\r\n\t\treturn 1;\r\n\t}\r\n\tfor (int i = 2; i <= sqrt(n); i++)\r\n\t{\r\n\t\tif (n % i == 0) // n chi het cho mot so bat ky. thi khong phai la so nguyen to !!!\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n}\r\n\r\nint main()\r\n{\r\n\tint a, b;\r\n\tint count = 0; // a,b la so can nhap\r\n\t\r\n\t\tcin >> a;\r\n\t\tcin >> b;\r\n\r\n\tfor (int i = a; i <= b; i++)\r\n\t{\r\n\t\tif (Kiemtrasonguyento(i) == 1)\r\n\t\t{\r\n\t\t\tcount++;\r\n\t\t}\r\n\t}\r\n\tcout << count;\r\n\treturn 0;\r\n}",
+          "displayName": "Trắng ba Chấm",
+          "email": "haodang12797@gmail.com",
+          "execTime": 2.34,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "BoL7h7wbKUUqpT299C0OF4URTiq1"
+        },
+        "P90xn7FTSUcinaXilHYsaLXEpdX2": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"stdio.h\"\n\nint isPrime(int number)\n{\n\tif(number == 1 || number == 0)\n\t{\n\t\treturn 0;\n\t}\n\tfor(int i = 2; i <= number - 1; i++)\n\t{\n\t\tif(number % i == 0)\n\t\t{\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n\n}\n\nint countPrimeNumbers(int m, int n)\n{\n\tint countPrimeNumbers = 0;\n\n\tif(m < 0 || n > 999999)\n\t{\n\t\treturn -1; //false\n\t}\n\tfor (int i  = m; i <= n; i++)\n\t{\n\t\tif(isPrime(i) == 1)\n\t\t{\t\n\t\t\tcountPrimeNumbers++;\n\t\t}\t\t\n\t}\n\treturn countPrimeNumbers;\n}\nint main(void)\n{\n\tint m,n;\n\tscanf(\"%d\",&m);\n\tscanf(\"%d\",&n);\n\n\tint totalPrimeNumber = countPrimeNumbers(m,n);\n\t\n\tprintf(\"%d\",totalPrimeNumber);\n\treturn 0;\n}\n\n",
+          "displayName": "Dang Khuong Nguyen",
+          "email": "owlthres@gmail.com",
+          "execTime": 2.47,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "P90xn7FTSUcinaXilHYsaLXEpdX2"
+        },
+        "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n\r\nint main()\r\n{\r\n    int n, m;\r\n    scanf(\"%d\", &n);\r\n    scanf(\"%d\", &m);\r\n    char *arr = new char[m + 1];\r\n    int count = m - n + 1;\r\n    for (int i = 0; i <= m; i++)\r\n    {\r\n        arr[i] = 1;\r\n    }\r\n    arr[0] = 0;\r\n    arr[1] = 0;\r\n\r\n    int j = 0;\r\n\r\n    for (int i = 2; i <= m; i++)\r\n    {\r\n        if (arr[i] == 1)\r\n        {\r\n            j = 2 * i;\r\n            while (j <= m)\r\n            {\r\n                if (arr[j] == 1)\r\n                {\r\n                    arr[j] = 0;\r\n                    if (j >= n)\r\n                    {\r\n                        count--;\r\n                    }\r\n                }\r\n                j += i;\r\n            }\r\n        }\r\n    }\r\n    printf(\"%d\", count);\r\n    return 0;\r\n}",
+          "displayName": "Kiet Tuan",
+          "email": "nguyentuankiet23031998@gmail.com",
+          "execTime": 3.38,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13"
+        },
+        "RmpvH9ertQh7KvMVO6QxttJutXl1": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\nint getNumOfPrimeUsingEra(int left, int right)\r\n{\r\n    int era[right + 1];\r\n    int i, j, num = 0;\r\n\r\n    era[0] = 0;\r\n    era[1] = 0;\r\n\r\n    // flood the array with 1\r\n    for (i = 2; i <= right; i++)\r\n    {\r\n        era[i] = 1;\r\n    }\r\n\r\n    for (i = 2; i <= right; i++)\r\n    {\r\n        if (era[i] == 1)\r\n        {\r\n            for (j = i + i; j <= right; j += i)\r\n            {\r\n                era[j] = 0;\r\n            }\r\n        }\r\n    }\r\n\r\n    for (i = left; i <= right; i++)\r\n    {\r\n        if (era[i] == 1)\r\n            num++;\r\n    }\r\n\r\n    // for (i = 0; i <= right; i++)\r\n    // {\r\n    //     printf(\"%d %d\\n\", i, era[i]);\r\n    // }\r\n    return num;\r\n}\r\n\r\nint main()\r\n{\r\n    int a, b;\r\n    int n = 0;\r\n    scanf(\"%d\", &a);\r\n    scanf(\"%d\", &b);\r\n    if (a > 0 && b > 1 && b > a)\r\n    {\r\n        printf(\"%d\", getNumOfPrimeUsingEra(a, b));\r\n    }\r\n    return 0;\r\n}",
+          "displayName": "Hieu Pham",
+          "email": "vanhieu1601@gmail.com",
+          "execTime": 0.49,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "RmpvH9ertQh7KvMVO6QxttJutXl1"
+        },
+        "ZPVcmCuF0VTfNDgfRLwhvDbgto73": {
+          "challengeID": "PRIME-COUNT",
+          "code": "\r\n#include \"stdio.h\"\r\n\r\n\r\nint isPrime(int temp) {\r\n\tif (temp == 1 || temp == 0)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tif (temp == 2 || temp == 3 || temp == 5 || temp == 7)\r\n\t\treturn 1;\r\n\tint a = temp / 2;\r\n\tfor (int i = 2; i < a + 1; i++)\r\n\t{\r\n\t\tif (temp % i == 0)\r\n\t\t\treturn 0;\r\n\r\n\t}\r\n\treturn 1;\r\n}\r\n\r\nint countPrime(int m, int n) {\r\n\tint count = 0;\r\n\tdo\r\n\t{\r\n\t\tif (m == 2 || m == 3 || m == 5 || m == 7 || m == 11 || m == 13)\r\n\t\t{\r\n\t\t\tcount++;\r\n\t\t}\r\n\t\telse\r\n\t\t{\r\n\t\t\tif (m % 2 != 0 || m % 3 == 0 || m % 5 != 0 || m % 7 != 0 || m % 11 != 0 || m % 13 != 0)\r\n\t\t\t{\r\n\t\t\t\tif (isPrime(m)==1)\r\n\t\t\t\t\tcount++;\r\n\t\t\t}\r\n\t\t}\r\n\t\tm++;\r\n\t} while (m <= n);\r\n\r\n\r\n\treturn count;\r\n}\r\nint main(int argc, char* argv[]){\r\n\t\r\n\tint m,n;\r\n    scanf(\"%d\\n%d\", &m, &n);\r\n\t\r\n\tint temp= countPrime(m,n);\r\n\tprintf(\"%d\",temp);\r\n    return 0;\r\n}\r\n",
+          "displayName": "DUC Tran Huynh",
+          "email": "duc.th2398@sinhvien.hoasen.edu.vn",
+          "execTime": 1.38,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "ZPVcmCuF0VTfNDgfRLwhvDbgto73"
+        },
+        "lCTslh3Ps3P6NCnxfH4Kckwn4fu2": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"stdio.h\"\r\n#include \"math.h\"\r\n#define _CRT_SECURE_NO_WARNINGS\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif (number < 2)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor (int i = 2; i <= sqrt(double(number)); i++)\r\n\t{\r\n\t\tif (number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main()\r\n{\r\n\tint number1, number2, dem = 0;\r\n\tdo\r\n\t{\r\n\t\tscanf(\"%d\", &number1);\r\n\t\tscanf(\"%d\", &number2);\r\n\t} while (number1 < 0);\r\n\r\n\tfor (int i = number1; i <= number2; i++)\r\n\t{\r\n\t\tif(isPrime(i)==1) dem++;\r\n\t\t\r\n\t}printf(\"%d \", dem);\r\n\r\n}",
+          "displayName": "Trọng Huỳnh",
+          "email": "huynhtrong.09502@gmail.com",
+          "execTime": 0.8600000000000001,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "lCTslh3Ps3P6NCnxfH4Kckwn4fu2"
+        },
+        "m8Dct8nOSgPnGRwGruuuYonbGhs1": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n#include <string.h>\r\n#include <math.h>\r\nint isPrime(int number)\r\n{\r\n\r\n    for (int i = 2; i*i <= number; i++)\r\n    {\r\n        \r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n\r\nint Prime(int m, int n)\r\n{\r\n    int count = 0;\r\n    if (m == 0 || m == 1 || n < 3)\r\n        m = 2;\r\n    for (int j = m; j <= n; j++)\r\n    {\r\n        if (isPrime(j))\r\n        {\r\n            //printf(\"%d\\n\",j);\r\n            count++;\r\n        }\r\n    }\r\n    return count;\r\n}\r\nint main()\r\n{\r\n    int m, n;\r\n    do\r\n    {\r\n        scanf(\"%d\", &m);\r\n        scanf(\"%d\", &n);\r\n        if (m, n < 0 || m >= n)\r\n            printf(\"Wrong format, just input number. Please check your number again!\\n\");\r\n    } while (m, n < 0 || m >= n);\r\n\r\n    printf(\"%d\\n\", Prime(m, n));\r\n}",
+          "displayName": "TAM Nguyen Minh",
+          "email": "tam.nm2494@sinhvien.hoasen.edu.vn",
+          "execTime": 0.7200000000000001,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "m8Dct8nOSgPnGRwGruuuYonbGhs1"
+        },
+        "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+          "challengeID": "PRIME-COUNT",
+          "code": "m = int(input())\r\nn = int(input())\r\n\r\narr = []\r\nfor i in range(n + 1):\r\n    arr.append(True)\r\n\r\narr[0] = False\r\narr[1] = False\r\n\r\ncount = n - m + 1\r\n\r\nfor i in range(2, n + 1):\r\n    j = i\r\n    if arr[j] == True:\r\n        while j<=n:\r\n                if j != i and arr[j] == True:    \r\n                        arr[j] = False\r\n                        if j >= m:\r\n                                count -= 1\r\n                j +=i\r\n                \r\n\r\n\r\nprint(count)",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 1.57,
+          "finished": 4,
+          "index": 3,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        }
+      },
+      "ownerID": "tYZS4bwQAnP4giOH0hGmDaV0BE23",
+      "sampleInput": "3\n13",
+      "sampleOutput": "5",
+      "shortDescription": "Đếm số nguyên tố trong đoạn từ m đến n",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "2\n13",
+          "output": "6"
+        },
+        {
+          "id": 2,
+          "input": "3\n13",
+          "output": "5"
+        },
+        {
+          "id": 3,
+          "input": "7\n202",
+          "output": "43"
+        },
+        {
+          "id": 4,
+          "input": "3\n99999",
+          "output": "9591"
+        }
+      ],
+      "title": "Đếm số nguyên tố"
+    },
+    "minSubNumber": {
+      "challengeID": "minSubNumber",
+      "details": "Dãy con tăng dài nhất từ dãy số đã cho ( >= )",
+      "ownerID": "JE0bAfKACfYhWIsz8UlPObDMhjU2",
+      "sampleInput": "2, 1, 4, 5, 7, 3, 7, 8, 9, 6",
+      "sampleOutput": "2 4 5 7 7 8 9",
+      "shortDescription": "Dãy con tăng dài nhất",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "2, 1, 4, 5, 7, 3, 7, 8, 9, 6",
+          "output": "2 4 5 7 7 8 9"
+        },
+        {
+          "id": 2,
+          "input": "5, 2, 3, 4, 9, 10, 5, 6, 7, 8",
+          "output": "2 3 4 5 6 7 8"
+        },
+        {
+          "id": 3,
+          "input": "1, 1, 1, 1, 1, 1, 1, 1",
+          "output": "1 1 1 1 1 1 1 1"
+        },
+        {
+          "id": 4,
+          "input": "1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1",
+          "output": "1 1 1 1 1 1 1 1"
+        },
+        {
+          "id": 5,
+          "input": "1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1",
+          "output": "1 1 1 1 1 1 1"
+        },
+        {
+          "id": 6,
+          "input": "3, 2, 1, 3, 2, 1, 1, 2, 3",
+          "output": "1, 1, 1, 2, 3"
+        }
+      ],
+      "title": "minSubNumber"
+    },
+    "romanNumber": {
+      "challengeID": "romanNumber",
+      "details": "Following this rule: https://vi.wikipedia.org/wiki/S%E1%BB%91_La_M%C3%A3\n\nKý tự\tGiá trị\nI\t1 (một)\nV\t5 (năm)\nX\t10 (mười)\nL\t50 (năm mươi)\nC\t100 (một trăm)\nD\t500 (năm trăm)\nM\t1000 (một nghìn)\n",
+      "ownerID": "JE0bAfKACfYhWIsz8UlPObDMhjU2",
+      "sampleInput": "XLV",
+      "sampleOutput": "45",
+      "shortDescription": "Convert roman number to decimal",
+      "testCases": [
+        {
+          "id": 1,
+          "input": "XXX",
+          "output": "30"
+        },
+        {
+          "id": 2,
+          "input": "XXXII",
+          "output": "32"
+        },
+        {
+          "id": 3,
+          "input": "XXXIX",
+          "output": "39"
+        },
+        {
+          "id": 4,
+          "input": "XLV",
+          "output": "45"
+        },
+        {
+          "id": 5,
+          "input": "IIII",
+          "output": "-1"
+        },
+        {
+          "id": 6,
+          "input": "XXXX",
+          "output": "-1"
+        },
+        {
+          "id": 7,
+          "input": "CCCC",
+          "output": "-1"
+        },
+        {
+          "id": 8,
+          "input": "MMMM",
+          "output": "-1"
+        },
+        {
+          "id": 9,
+          "input": "VV",
+          "output": "-1"
+        },
+        {
+          "id": 10,
+          "input": "LL",
+          "output": "-1"
+        },
+        {
+          "id": 11,
+          "input": "DD",
+          "output": "-1"
+        },
+        {
+          "id": 12,
+          "input": "IV",
+          "output": "4"
+        },
+        {
+          "id": 13,
+          "input": "IX",
+          "output": "9"
+        },
+        {
+          "id": 14,
+          "input": "XL",
+          "output": "40"
+        },
+        {
+          "id": 15,
+          "input": "XC",
+          "output": "90"
+        },
+        {
+          "id": 16,
+          "input": "CD",
+          "output": "400"
+        },
+        {
+          "id": 17,
+          "input": "CM",
+          "output": "900"
+        },
+        {
+          "id": 18,
+          "input": "MMMDCCCLXXXVIII",
+          "output": "3888"
+        },
+        {
+          "id": 19,
+          "input": "MMMCMXCIX",
+          "output": "3999"
+        },
+        {
+          "id": 20,
+          "input": "M-M-M-X-CLXVI",
+          "output": "3010166"
+        },
+        {
+          "id": 21,
+          "input": "VLDD",
+          "output": "-1"
+        },
+        {
+          "id": 22,
+          "input": "DLVV",
+          "output": "-1"
+        },
+        {
+          "id": 23,
+          "input": "DLLV",
+          "output": "-1"
+        },
+        {
+          "id": 24,
+          "input": "DDLV",
+          "output": "-1"
+        },
+        {
+          "id": 25,
+          "input": "LDVV",
+          "output": "-1"
+        },
+        {
+          "id": 26,
+          "input": "LDDD",
+          "output": "-1"
+        },
+        {
+          "id": 27,
+          "input": "D-D-V",
+          "output": "-1"
+        },
+        {
+          "id": 28,
+          "input": "D-V",
+          "output": "500005"
+        },
+        {
+          "id": 29,
+          "input": "D-X-CXXXIV",
+          "output": "510134"
+        },
+        {
+          "id": 30,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-I-",
+          "output": "3888000"
+        },
+        {
+          "id": 31,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-I-MMMDCCCLXXXVIII",
+          "output": "3891888"
+        },
+        {
+          "id": 32,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-I-MMMMDCCCLXXXVIII",
+          "output": "-1"
+        },
+        {
+          "id": 33,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-IMMMDCCCLXXXVIII",
+          "output": "-1"
+        },
+        {
+          "id": 34,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-I-M-MMDCCCLXXXVIII",
+          "output": "-1"
+        },
+        {
+          "id": 35,
+          "input": "",
+          "output": "-1"
+        },
+        {
+          "id": 36,
+          "input": "ABC",
+          "output": "-1"
+        },
+        {
+          "id": 37,
+          "input": "123",
+          "output": "-1"
+        },
+        {
+          "id": 38,
+          "input": "ABCD123",
+          "output": "-1"
+        },
+        {
+          "id": 39,
+          "input": "XIL",
+          "output": "-1"
+        },
+        {
+          "id": 40,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-I",
+          "output": "3887001"
+        },
+        {
+          "id": 41,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-XI",
+          "output": "3887011"
+        },
+        {
+          "id": 42,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I-A",
+          "output": "-1"
+        },
+        {
+          "id": 43,
+          "input": "M-M-M-D-C-C-C-L-X-X-X-V-I-I--",
+          "output": "-1"
+        },
+        {
+          "id": 44,
+          "input": "M--M--D--M-D-C-C-C-L-X-X-X-V-I-I-I-",
+          "output": "2501888000"
+        },
+        {
+          "id": 45,
+          "input": "M--M--D--M-D-C-C-C-L-X-X-X-V-I-I-I",
+          "output": "2501887001"
+        },
+        {
+          "id": 46,
+          "input": "M--M--D--M-D-C-C-C-L-X-X-X-V-I-I-IV",
+          "output": "2501887004"
+        },
+        {
+          "id": 47,
+          "input": "M--M--D--M-D-C-C-C-L-X-X-X-V-I-I-X",
+          "output": "2501887010"
+        },
+        {
+          "id": 48,
+          "input": "M--M--D--C--C--",
+          "output": "2700000000"
+        },
+        {
+          "id": 49,
+          "input": "M--M--D--D--C--",
+          "output": "-1"
+        },
+        {
+          "id": 50,
+          "input": "M--M--M--D--C--C--C--L--X--X--X--V--I--I--I--M-M-M-D-C-C-C-L-X-X-X-V-I-I-I-MMMDCCCLXXXVIII",
+          "output": "3891891888"
+        }
+      ],
+      "title": "romanNumber"
+    }
+  },
+  "config": {
+    "backend": "https://pm.itsstraining.edu.vn:8889"
+  },
+  "team": {
+    "-LiwPDDpskPwiQLdOm7T": {
+      "dummy": 0,
+      "ownerID": "123"
+    },
+    "-LiwPwKyjMO7bFBRlSwz": {
+      "dummy": 0,
+      "members": {
+        "abc": 0,
+        "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+          "status": 1
+        }
+      },
+      "ownerID": "123"
+    }
+  },
+  "users": {
+    "0uhZmM3DjDdif8mM69tXhir4hEV2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "4e3sHzUWJfeYNI7Jn7d1U0Oq3C02": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\n#include <string.h>\r\n#include <math.h>\r\nint isPrime()\r\n{\r\n    int number;\r\n   // do\r\n  //  {\r\n        //printf(\"Input number: \");\r\n        scanf(\"%d\", &number);\r\n        //if (number < 0)\r\n        //    printf(\"Wrong format, just input number. Please check your number again!\\n\");\r\n   // } while (number < 0);\r\n    if (number == 0 || number == 1)\r\n        return 0;\r\n    for (int i = 2; i < sqrt(number); i++)\r\n    {\r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\nint main()\r\n{\r\n    printf(\"%d\\n\", isPrime());\r\n}",
+          "displayName": "ITSS VN",
+          "email": "itssvn.com@gmail.com",
+          "execTime": 4.26,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "4e3sHzUWJfeYNI7Jn7d1U0Oq3C02"
+        },
+        "dummy": 0
+      }
+    },
+    "5BFv2Z1SgfSaVHffeN3rofxS5ll1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "6n9ZHlIciUVypWZ7jlKzBLZxqG92": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "process.stdin.once('data', (number) => {\r\n    console.log(isPrime(number) ? 1 : 0);\r\n    process.exit();\r\n})\r\n\r\nfunction isPrime(number) {\r\n    if (number < 2) {\r\n        return false;\r\n    }\r\n    if (number == 2) {\r\n        return true;\r\n    }\r\n    for (let i = 2; i <= Math.sqrt(number); i++) {\r\n        if (number % i == 0) {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n}\r\n\r\n",
+          "displayName": "MINH.PDN2259 2172259",
+          "email": "minh.pdn2259@sinhvien.hoasen.edu.vn",
+          "execTime": 22.36,
+          "finished": 11,
+          "index": 10,
+          "languageID": 4,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "6n9ZHlIciUVypWZ7jlKzBLZxqG92"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include<stdio.h>\r\n#include<math.h>\r\n\r\nchar isPrime(int number)\r\n{\r\n    if (number < 2)\r\n    {\r\n        return 0;\r\n    }\r\n    if (number == 2)\r\n    {\r\n        return 1;\r\n    }\r\n    int sqnumber = sqrt(number);\r\n    for (int i = 2; i <= sqnumber; i++)\r\n    {\r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n\r\nint countPrime(int start, int end)\r\n{\r\n    int counter = 0;\r\n    for (int runner = start; runner <= end; runner ++)\r\n    {\r\n        if (isPrime(runner) == 1)\r\n        {\r\n            counter ++;\r\n        }\r\n    }\r\n    return counter;\r\n}\r\n\r\n// gcc prime.cpp -lstdc++ -lm\r\nint main()\r\n{\r\n    int m = 0, n = 0;\r\n    scanf(\"%d\\n%d\", &m, &n);\r\n    printf(\"%d\", countPrime(m, n));\r\n    return 0;\r\n}",
+          "displayName": "MINH.PDN2259 2172259",
+          "email": "minh.pdn2259@sinhvien.hoasen.edu.vn",
+          "execTime": 0.92,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "6n9ZHlIciUVypWZ7jlKzBLZxqG92"
+        },
+        "dummy": 0
+      }
+    },
+    "6rCAm22b6yfG8DAowZxAgDvYui33": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "CSLT_Loop_001": {
+          "challengeID": "CSLT_Loop_001",
+          "code": "#include <stdio.h>\r\nint main()\r\n{\r\n    int lower[6]={0,51,101,201,301,401};\r\n    int upper[6]={50,100,200,300,400,100000000};\r\n    float cost[6]={1678,1734,2014,2536,2834,2927};\r\n    int n;\r\n    scanf(\"%d\",&n);\r\n    float t=0, sum=0;\r\n    int i=0;\r\n    do\r\n    {\r\n        if(n<lower[i])  t = 0;\r\n        else\r\n            if(n<upper[i])\r\n                t = (n - lower[i] + 1)*cost[i];\r\n            else\r\n                t = (upper[i] - lower[i] + 1)*cost[i];\r\n        sum += t;\r\n        i++;\r\n    }while(t!=0||i<6);\r\n    sum = sum * 1.1;\r\n    printf(\"%.1f\",sum);\r\n    return 0;\r\n}",
+          "date": 1562575831106,
+          "displayName": "Huan Phan",
+          "email": "huanpdt@gmail.com",
+          "execTime": 9.54,
+          "finished": 5,
+          "index": 4,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "101",
+              "isPublic": true,
+              "output": "191721.2"
+            },
+            {
+              "id": 2,
+              "input": "246",
+              "isPublic": true,
+              "output": "539367.4"
+            },
+            {
+              "id": 3,
+              "input": "323",
+              "isPublic": true,
+              "output": "761706.0"
+            },
+            {
+              "id": 4,
+              "input": "401",
+              "isPublic": true,
+              "output": "1004965.5"
+            },
+            {
+              "id": 5,
+              "input": "662",
+              "isPublic": true,
+              "output": "1845307.2"
+            }
+          ],
+          "uid": "6rCAm22b6yfG8DAowZxAgDvYui33"
+        },
+        "CSLT_Loop_002": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "#include \"stdio.h\"\r\nvoid daoChuoi(char *s, char len)\r\n{\r\n    char low=0, high = len-1, temp;\r\n    while(low < high)\r\n    {\r\n        temp = s[low];\r\n        s[low] = s[high];\r\n        s[high] = temp;\r\n        low ++;\r\n        high --;\r\n    }\r\n    s[len] = '\\0';\r\n}\r\nint main()\r\n{\r\n    unsigned int n;\r\n    char s[11]=\"\";\r\n    char count=0;\r\n    unsigned int remain, result;\r\n    scanf(\"%u\",&n);\r\n    result = n;\r\n    do{\r\n        remain = result % 2;\r\n        result = result / 2;\r\n        s[count] = remain + 48; //'0' = 48, '1' = 49\r\n        count++;\r\n    }while(result !=0);\r\n    daoChuoi(s,count);\r\n    printf(\"%s\",s);\r\n    return 0;\r\n}",
+          "date": 1569650758677,
+          "displayName": "Huan Phan",
+          "email": "huanpdt@gmail.com",
+          "execTime": 3.75,
+          "finished": 5,
+          "index": 4,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "6rCAm22b6yfG8DAowZxAgDvYui33"
+        },
+        "dummy": 0
+      }
+    },
+    "At38w0Iu24VbJ9UhXc1tGfNJkJ83": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\nint KTraSNT(int n){\r\n    if (n == 0 || n == 1)\r\n    return 0;\r\n    if (n == 2)\r\n    return 1;\r\n\r\n    for (int i=2; i*i<n; i++)\r\n    {\r\n        if (n%i == 0)\r\n        return 0;\r\n    }\r\n    return 1;\r\n}\r\nint main(){\r\n    int n;\r\n    scanf(\"%d\", &n);\r\n    printf(\"%d\", KTraSNT(n));\r\n    return 0;\r\n}",
+          "displayName": "THUC.ND1609 2171609",
+          "email": "thuc.nd1609@sinhvien.hoasen.edu.vn",
+          "execTime": 2.33,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "At38w0Iu24VbJ9UhXc1tGfNJkJ83"
+        },
+        "dummy": 0
+      }
+    },
+    "BFPxSpoAD3UBMD8N537mcCxdrwy1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "BoL7h7wbKUUqpT299C0OF4URTiq1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"iostream\"\r\n#include \"stdio.h\"\r\n#include \"math.h\"\r\nusing namespace std;\r\n\r\n// Ham kiem tr so nguyen to\r\nint Kiemtrasonguyento(int n)// n la so tu nhien\r\n{\r\n\tif (n < 2)\r\n\t{\r\n\t\treturn 0; // 0 == false\r\n\t}\r\n\tif (n == 1) \r\n\t{\r\n\t\treturn 1;\r\n\t}\r\n\tfor (int i = 2; i <= sqrt(n); i++)\r\n\t{\r\n\t\tif (n % i == 0) // n chi het cho mot so bat ky. thi khong phai la so nguyen to !!!\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n}\r\n\r\nint main()\r\n{\r\n\tint a, b;\r\n\tint count = 0; // a,b la so can nhap\r\n\t\r\n\t\tcin >> a;\r\n\t\tcin >> b;\r\n\r\n\tfor (int i = a; i <= b; i++)\r\n\t{\r\n\t\tif (Kiemtrasonguyento(i) == 1)\r\n\t\t{\r\n\t\t\tcount++;\r\n\t\t}\r\n\t}\r\n\tcout << count;\r\n\treturn 0;\r\n}",
+          "displayName": "Trắng ba Chấm",
+          "email": "haodang12797@gmail.com",
+          "execTime": 2.34,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "BoL7h7wbKUUqpT299C0OF4URTiq1"
+        },
+        "dummy": 0
+      }
+    },
+    "E4Dw1jZOTigmwsAo2YIDN7MB0Le2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "JE0bAfKACfYhWIsz8UlPObDMhjU2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "P90xn7FTSUcinaXilHYsaLXEpdX2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\n\n\nint isPrime(int number)\n{\n\tif(number == 1 || number == 0)\n\t{\n\t\treturn 0;\n\t}\n\tfor(int i = 2; i <= number - 1; i++)\n\t{\n\t\tif(number % i == 0)\n\t\t{\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n\n}\n\nint main(void)\n{\n\tint number;\n\tscanf(\"%d\",&number);\n\n\tint primeNumber = isPrime(number);\n\tif(primeNumber == 0)\n\t{\n\t\tprintf(\"0\");\n\t}\n\telse\n\t{\n\t\tprintf(\"1\");\n\t}\n}\n",
+          "displayName": "Dang Khuong Nguyen",
+          "email": "owlthres@gmail.com",
+          "execTime": 1.83,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "P90xn7FTSUcinaXilHYsaLXEpdX2"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"stdio.h\"\n\nint isPrime(int number)\n{\n\tif(number == 1 || number == 0)\n\t{\n\t\treturn 0;\n\t}\n\tfor(int i = 2; i <= number - 1; i++)\n\t{\n\t\tif(number % i == 0)\n\t\t{\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n\n}\n\nint countPrimeNumbers(int m, int n)\n{\n\tint countPrimeNumbers = 0;\n\n\tif(m < 0 || n > 999999)\n\t{\n\t\treturn -1; //false\n\t}\n\tfor (int i  = m; i <= n; i++)\n\t{\n\t\tif(isPrime(i) == 1)\n\t\t{\t\n\t\t\tcountPrimeNumbers++;\n\t\t}\t\t\n\t}\n\treturn countPrimeNumbers;\n}\nint main(void)\n{\n\tint m,n;\n\tscanf(\"%d\",&m);\n\tscanf(\"%d\",&n);\n\n\tint totalPrimeNumber = countPrimeNumbers(m,n);\n\t\n\tprintf(\"%d\",totalPrimeNumber);\n\treturn 0;\n}\n\n",
+          "displayName": "Dang Khuong Nguyen",
+          "email": "owlthres@gmail.com",
+          "execTime": 2.47,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "P90xn7FTSUcinaXilHYsaLXEpdX2"
+        },
+        "PRIME-COUNT-BASIC": {
+          "challengeID": "PRIME-COUNT-BASIC",
+          "code": "#include \"stdio.h\"\n\nint isPrime(int number)\n{\n\tif(number == 1 || number == 0)\n\t{\n\t\treturn 0;\n\t}\n\tfor(int i = 2; i <= number - 1; i++)\n\t{\n\t\tif(number % i == 0)\n\t\t{\n\t\t\treturn 0;\n\t\t}\n\t}\n\treturn 1;\n\n}\n\nint countPrimeNumbers(int m, int n)\n{\n\tint countPrimeNumbers = 0;\n\n\tif(m < 0 || n > 999999)\n\t{\n\t\treturn -1; //false\n\t}\n\tfor (int i  = m; i <= n; i++)\n\t{\n\t\tif(isPrime(i) == 1)\n\t\t{\t\n\t\t\tcountPrimeNumbers++;\n\t\t}\t\t\n\t}\n\treturn countPrimeNumbers;\n}\nint main(void)\n{\n\tint m,n;\n\tscanf(\"%d\",&m);\n\tscanf(\"%d\",&n);\n\n\tint totalPrimeNumber = countPrimeNumbers(m,n);\n\t\n\tprintf(\"%d\",totalPrimeNumber);\n\treturn 0;\n}\n\n",
+          "displayName": "Dang Khuong Nguyen",
+          "email": "owlthres@gmail.com",
+          "execTime": 0.12,
+          "finished": 1,
+          "index": 0,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "5\n6789",
+              "output": "871"
+            }
+          ],
+          "uid": "P90xn7FTSUcinaXilHYsaLXEpdX2"
+        },
+        "dummy": 0
+      }
+    },
+    "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "ABC": {
+          "challengeID": "ABC",
+          "code": "result = int(input())\nprint(result+1)",
+          "displayName": "Kiet Tuan",
+          "email": "nguyentuankiet23031998@gmail.com",
+          "execTime": 0.1,
+          "finished": 3,
+          "index": 2,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "1",
+              "output": "2"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "3"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "4"
+            }
+          ],
+          "uid": "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13"
+        },
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif(number == 1 || number == 0)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor(int i = 2; i <= number - 1; i++)\r\n\t{\r\n\t\tif(number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main(void)\r\n{\r\n\tint number;\r\n\tscanf(\"%d\",&number);\r\n\r\n\tint primeNumber = isPrime(number);\r\n\tif(primeNumber == 0)\r\n\t{\r\n\t\tprintf(\"0\");\r\n\t}\r\n\telse\r\n\t{\r\n\t\tprintf(\"1\");\r\n\t}\r\n}\r\n",
+          "displayName": "Kiet Tuan",
+          "email": "nguyentuankiet23031998@gmail.com",
+          "execTime": 1.88,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n\r\nint main()\r\n{\r\n    int n, m;\r\n    scanf(\"%d\", &n);\r\n    scanf(\"%d\", &m);\r\n    char *arr = new char[m + 1];\r\n    int count = m - n + 1;\r\n    for (int i = 0; i <= m; i++)\r\n    {\r\n        arr[i] = 1;\r\n    }\r\n    arr[0] = 0;\r\n    arr[1] = 0;\r\n\r\n    int j = 0;\r\n\r\n    for (int i = 2; i <= m; i++)\r\n    {\r\n        if (arr[i] == 1)\r\n        {\r\n            j = 2 * i;\r\n            while (j <= m)\r\n            {\r\n                if (arr[j] == 1)\r\n                {\r\n                    arr[j] = 0;\r\n                    if (j >= n)\r\n                    {\r\n                        count--;\r\n                    }\r\n                }\r\n                j += i;\r\n            }\r\n        }\r\n    }\r\n    printf(\"%d\", count);\r\n    return 0;\r\n}",
+          "displayName": "Kiet Tuan",
+          "email": "nguyentuankiet23031998@gmail.com",
+          "execTime": 3.38,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "Pl5Bc6F4H2VzpQqLgGFeTtvB8N13"
+        },
+        "dummy": 0
+      }
+    },
+    "RmLVQKe16PhSYa4lyAxHelee5ek1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "CSLT_Loop_002": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "print(bin(input())[2:])",
+          "date": 1569670944158,
+          "displayName": "KIET Nguyen Tuan",
+          "email": "kiet.nt2392@sinhvien.hoasen.edu.vn",
+          "execTime": 0.13999999999999999,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "RmLVQKe16PhSYa4lyAxHelee5ek1"
+        },
+        "dummy": 0
+      }
+    },
+    "RmpvH9ertQh7KvMVO6QxttJutXl1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include <stdio.h>\r\n\r\nint isPrime(int num)\r\n{\r\n    if(num < 2) return 0;\r\n    for (int i = 2; i < num; i++)\r\n    {\r\n        if (!(num % i))\r\n            return 0;\r\n    }\r\n    return 1;\r\n}\r\n\r\nint main()\r\n{\r\n    int num;\r\n    scanf(\"%d\", &num);\r\n    printf(\"%d\", isPrime(num));\r\n    return 0;\r\n}",
+          "displayName": "Hieu Pham",
+          "email": "vanhieu1601@gmail.com",
+          "execTime": 1.7999999999999998,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "RmpvH9ertQh7KvMVO6QxttJutXl1"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\nint getNumOfPrimeUsingEra(int left, int right)\r\n{\r\n    int era[right + 1];\r\n    int i, j, num = 0;\r\n\r\n    era[0] = 0;\r\n    era[1] = 0;\r\n\r\n    // flood the array with 1\r\n    for (i = 2; i <= right; i++)\r\n    {\r\n        era[i] = 1;\r\n    }\r\n\r\n    for (i = 2; i <= right; i++)\r\n    {\r\n        if (era[i] == 1)\r\n        {\r\n            for (j = i + i; j <= right; j += i)\r\n            {\r\n                era[j] = 0;\r\n            }\r\n        }\r\n    }\r\n\r\n    for (i = left; i <= right; i++)\r\n    {\r\n        if (era[i] == 1)\r\n            num++;\r\n    }\r\n\r\n    // for (i = 0; i <= right; i++)\r\n    // {\r\n    //     printf(\"%d %d\\n\", i, era[i]);\r\n    // }\r\n    return num;\r\n}\r\n\r\nint main()\r\n{\r\n    int a, b;\r\n    int n = 0;\r\n    scanf(\"%d\", &a);\r\n    scanf(\"%d\", &b);\r\n    if (a > 0 && b > 1 && b > a)\r\n    {\r\n        printf(\"%d\", getNumOfPrimeUsingEra(a, b));\r\n    }\r\n    return 0;\r\n}",
+          "displayName": "Hieu Pham",
+          "email": "vanhieu1601@gmail.com",
+          "execTime": 0.49,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "RmpvH9ertQh7KvMVO6QxttJutXl1"
+        },
+        "dummy": 0
+      }
+    },
+    "SmcaFlZ96cUFVevYTBMxWLZ62wN2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "CSLT_Loop_002": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "import java.util.Scanner;\r\n\r\npublic class Program {\r\n    public static void main(String[]args) {\r\n        Scanner sc = new Scanner(System.in);\r\n        int n = sc.nextInt();\r\n        while (n > 0) {\r\n            System.out.println(Integer.toBinaryString(n));\r\n            break;\r\n        }\r\n    }\r\n}",
+          "date": 1569658891720,
+          "displayName": "Hoài Gia Linh Nguyễn",
+          "email": "nhglinh263@gmail.com",
+          "execTime": 37.63,
+          "finished": 5,
+          "index": 4,
+          "languageID": 8,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "SmcaFlZ96cUFVevYTBMxWLZ62wN2"
+        },
+        "dummy": 0
+      }
+    },
+    "ZPVcmCuF0VTfNDgfRLwhvDbgto73": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "\r\n#include \"stdio.h\"\r\n\r\n\r\nint isPrime(int temp) {\r\n\tif (temp == 1 || temp == 0)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tif (temp == 2 || temp == 3 || temp == 5 || temp == 7)\r\n\t\treturn 1;\r\n\tint a = temp / 2;\r\n\tfor (int i = 2; i < a + 1; i++)\r\n\t{\r\n\t\tif (temp % i == 0)\r\n\t\t\treturn 0;\r\n\r\n\t}\r\n\treturn 1;\r\n}\r\n\r\nint countPrime(int m, int n) {\r\n\tint count = 0;\r\n\tdo\r\n\t{\r\n\t\tif (m == 2 || m == 3 || m == 5 || m == 7 || m == 11 || m == 13)\r\n\t\t{\r\n\t\t\tcount++;\r\n\t\t}\r\n\t\telse\r\n\t\t{\r\n\t\t\tif (m % 2 != 0 || m % 3 == 0 || m % 5 != 0 || m % 7 != 0 || m % 11 != 0 || m % 13 != 0)\r\n\t\t\t{\r\n\t\t\t\tif (isPrime(m)==1)\r\n\t\t\t\t\tcount++;\r\n\t\t\t}\r\n\t\t}\r\n\t\tm++;\r\n\t} while (m <= n);\r\n\r\n\r\n\treturn count;\r\n}\r\nint main(int argc, char* argv[]){\r\n\t\r\n\tint m,n;\r\n    scanf(\"%d\\n%d\", &m, &n);\r\n\t\r\n\tint temp= countPrime(m,n);\r\n\tprintf(\"%d\",temp);\r\n    return 0;\r\n}\r\n",
+          "displayName": "DUC Tran Huynh",
+          "email": "duc.th2398@sinhvien.hoasen.edu.vn",
+          "execTime": 1.38,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "ZPVcmCuF0VTfNDgfRLwhvDbgto73"
+        },
+        "dummy": 0
+      }
+    },
+    "ZdgOYZravDWZQbN2DMbMoYEUPb72": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "d8Lsq2W4J4cFqmQiQ06QWi7IvtB2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "LTHDH0801v2": {
+          "challengeID": "LTHDH0801v2",
+          "code": "#include <iostream>\r\n#include <malloc.h>\r\nusing namespace std;\r\n\r\nint *getProcess(int numberOfProcess)\r\n{\r\n    int *process = new int[numberOfProcess + 1];\r\n    int key;\r\n    for (int count = 0; count < numberOfProcess; count++)\r\n    {\r\n        do\r\n        {\r\n            cin >> key;\r\n        } while (key <= 0);\r\n        process[count] = key;\r\n    }\r\n    process[numberOfProcess] = -1;\r\n    return process;\r\n}\r\n\r\nint getNumber()\r\n{\r\n    int number = 0;\r\n    cin >> number;\r\n    return number;\r\n}\r\n\r\nint *getMemories(int numberOfMemories)\r\n{\r\n    int *memory = new int[numberOfMemories + 1];\r\n    int key;\r\n    for (int count = 0; count < numberOfMemories; count++)\r\n    {\r\n        do\r\n        {\r\n            cin >> key;\r\n        } while (key <= 0);\r\n        memory[count] = key;\r\n    }\r\n    memory[numberOfMemories] = -1;\r\n    return memory;\r\n}\r\n\r\nvoid readMemories(int *memories)\r\n{\r\n    for (int order = 0; memories[order] != -1; order++)\r\n    {\r\n        if (order == 0) {\r\n            cout << memories[order];\r\n        }\r\n        else cout << \" \" << memories[order];\r\n    }\r\n}\r\n\r\nvoid generateFCFS(int *process, int *memories) {\r\n    int * headProcess = process;\r\n    while(*process != -1) {\r\n        bool isAllocated = false;\r\n        for (int currentMemoryIndex = 0; memories[currentMemoryIndex] != -1; currentMemoryIndex++) {\r\n            if (memories[currentMemoryIndex] >= *process) {\r\n                if (process == headProcess) \r\n                    cout << currentMemoryIndex;\r\n                else \r\n                    cout << \" \" << currentMemoryIndex;\r\n                memories[currentMemoryIndex] -= *process;\r\n                isAllocated = true;\r\n                break;\r\n            }\r\n        }\r\n        if (!isAllocated) {\r\n            cout<< \" -1\";\r\n        }\r\n        process = process + 1;\r\n    }\r\n    cout << \" \";\r\n}\r\n\r\nint main()\r\n{\r\n    int numberMemories = getNumber();\r\n    int *memories = getMemories(numberMemories);\r\n    int numberProcess = getNumber();\r\n    int *process = getProcess(numberProcess);\r\n    cout << numberProcess << \" \";\r\n    generateFCFS(process, memories);\r\n    cout << numberMemories << \" \";\r\n    readMemories(memories);\r\n    return 0;\r\n}",
+          "date": 1561178927442,
+          "displayName": "Nhật Minh Phạm Đỗ",
+          "email": "pdn.minh1999@gmail.com",
+          "execTime": 1.24,
+          "finished": 3,
+          "index": 2,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "4 700 600 300 400 4 212 417 112 426\n",
+              "output": "4 0 0 1 1 4 71 62 300 400"
+            },
+            {
+              "id": 2,
+              "input": "5 100 500 200 300 600 4 212 417 112 426\n",
+              "output": "4 1 4 1 -1 5 100 176 200 300 183"
+            },
+            {
+              "id": 3,
+              "input": "5 200 400 600 300 500 4 220 250 550 320\n",
+              "output": "4 1 2 -1 2 5 200 180 30 300 500"
+            }
+          ],
+          "uid": "d8Lsq2W4J4cFqmQiQ06QWi7IvtB2"
+        },
+        "dummy": 0
+      }
+    },
+    "hkdZAxW6ntfGyI5BIIdNscYsusn1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "lCTslh3Ps3P6NCnxfH4Kckwn4fu2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "#include \"stdio.h\"\r\n#define _CRT_SECURE_NO_WARNINGS\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif (number < 2)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor (int i = 2; i <= number - 1; i++)\r\n\t{\r\n\t\tif (number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main(void)\r\n{\r\n\tint number1 = 0;\r\n\tdo\r\n    {\r\n\t\tscanf(\"%d\", &number1);\r\n\t} while (number1 < 0);\r\n\r\n\tif (isPrime(number1) == 0)\r\n\t{\r\n\t\tprintf(\"0\\n\");\r\n\t}\r\n\telse\r\n\t{\r\n\t\tprintf(\"1\\n\");\r\n\t}\r\n}",
+          "displayName": "Trọng Huỳnh",
+          "email": "huynhtrong.09502@gmail.com",
+          "execTime": 1.9,
+          "finished": 11,
+          "index": 10,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "lCTslh3Ps3P6NCnxfH4Kckwn4fu2"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include \"stdio.h\"\r\n#include \"math.h\"\r\n#define _CRT_SECURE_NO_WARNINGS\r\n\r\n\r\nint isPrime(int number)\r\n{\r\n\tif (number < 2)\r\n\t{\r\n\t\treturn 0;\r\n\t}\r\n\tfor (int i = 2; i <= sqrt(double(number)); i++)\r\n\t{\r\n\t\tif (number % i == 0)\r\n\t\t{\r\n\t\t\treturn 0;\r\n\t\t}\r\n\t}\r\n\treturn 1;\r\n\r\n}\r\n\r\nint main()\r\n{\r\n\tint number1, number2, dem = 0;\r\n\tdo\r\n\t{\r\n\t\tscanf(\"%d\", &number1);\r\n\t\tscanf(\"%d\", &number2);\r\n\t} while (number1 < 0);\r\n\r\n\tfor (int i = number1; i <= number2; i++)\r\n\t{\r\n\t\tif(isPrime(i)==1) dem++;\r\n\t\t\r\n\t}printf(\"%d \", dem);\r\n\r\n}",
+          "displayName": "Trọng Huỳnh",
+          "email": "huynhtrong.09502@gmail.com",
+          "execTime": 0.8600000000000001,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "lCTslh3Ps3P6NCnxfH4Kckwn4fu2"
+        },
+        "dummy": 0
+      }
+    },
+    "m8Dct8nOSgPnGRwGruuuYonbGhs1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "CSLT_Loop_002": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "x = int(input())\r\nprint(bin(x)[2:])",
+          "date": 1569670794889,
+          "displayName": "TAM Nguyen Minh",
+          "email": "tam.nm2494@sinhvien.hoasen.edu.vn",
+          "execTime": 0.14,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "m8Dct8nOSgPnGRwGruuuYonbGhs1"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "#include <stdio.h>\r\n#include <string.h>\r\n#include <math.h>\r\nint isPrime(int number)\r\n{\r\n\r\n    for (int i = 2; i*i <= number; i++)\r\n    {\r\n        \r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n\r\nint Prime(int m, int n)\r\n{\r\n    int count = 0;\r\n    if (m == 0 || m == 1 || n < 3)\r\n        m = 2;\r\n    for (int j = m; j <= n; j++)\r\n    {\r\n        if (isPrime(j))\r\n        {\r\n            //printf(\"%d\\n\",j);\r\n            count++;\r\n        }\r\n    }\r\n    return count;\r\n}\r\nint main()\r\n{\r\n    int m, n;\r\n    do\r\n    {\r\n        scanf(\"%d\", &m);\r\n        scanf(\"%d\", &n);\r\n        if (m, n < 0 || m >= n)\r\n            printf(\"Wrong format, just input number. Please check your number again!\\n\");\r\n    } while (m, n < 0 || m >= n);\r\n\r\n    printf(\"%d\\n\", Prime(m, n));\r\n}",
+          "displayName": "TAM Nguyen Minh",
+          "email": "tam.nm2494@sinhvien.hoasen.edu.vn",
+          "execTime": 0.7200000000000001,
+          "finished": 4,
+          "index": 3,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "m8Dct8nOSgPnGRwGruuuYonbGhs1"
+        },
+        "PRIME-COUNT-BASIC": {
+          "challengeID": "PRIME-COUNT-BASIC",
+          "code": "#include <stdio.h>\r\n#include <string.h>\r\n#include <math.h>\r\nint isPrime(int number)\r\n{\r\n\r\n    for (int i = 2; i*i <= number; i++)\r\n    {\r\n        \r\n        if (number % i == 0)\r\n        {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n\r\nint Prime(int m, int n)\r\n{\r\n    int count = 0;\r\n    if (m == 0 || m == 1 || n < 3)\r\n        m = 2;\r\n    for (int j = m; j <= n; j++)\r\n    {\r\n        if (isPrime(j))\r\n        {\r\n            //printf(\"%d\\n\",j);\r\n            count++;\r\n        }\r\n    }\r\n    return count;\r\n}\r\nint main()\r\n{\r\n    int m, n;\r\n    do\r\n    {\r\n        scanf(\"%d\", &m);\r\n        scanf(\"%d\", &n);\r\n        if (m, n < 0 || m >= n)\r\n            printf(\"Wrong format, just input number. Please check your number again!\\n\");\r\n    } while (m, n < 0 || m >= n);\r\n\r\n    printf(\"%d\\n\", Prime(m, n));\r\n}",
+          "displayName": "TAM Nguyen Minh",
+          "email": "tam.nm2494@sinhvien.hoasen.edu.vn",
+          "execTime": 0.16,
+          "finished": 1,
+          "index": 0,
+          "languageID": 7,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "5\n6789",
+              "output": "871"
+            }
+          ],
+          "uid": "m8Dct8nOSgPnGRwGruuuYonbGhs1"
+        },
+        "dummy": 0
+      }
+    },
+    "oblidflZgYesN0feRuYH300jhkl1": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "qMOOErKluXhJm7tZdnn7biraoDy2": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "tXRLPrtvhtbz6R4iFOowMh1T8p23": {
+      "challenges": {
+        "dummy": 0
+      },
+      "history": {
+        "dummy": 0
+      }
+    },
+    "tYZS4bwQAnP4giOH0hGmDaV0BE23": {
+      "challenges": {
+        "dummy": 1
+      },
+      "history": {
+        "ABC": {
+          "challengeID": "ABC",
+          "code": "print(int(input())+1)",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.08,
+          "finished": 3,
+          "index": 2,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "1",
+              "output": "2"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "3"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "4"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "CSLT001": {
+          "challengeID": "CSLT001",
+          "code": "data = raw_input()\r\n\r\nreversed = \"\"\r\n\r\nfor ch in data:\r\n    reversed = ch + reversed\r\n\r\nprint(reversed)",
+          "date": 1569070384300,
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.06,
+          "finished": 2,
+          "index": 1,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "1 2 6 3 4 5 9 2",
+              "output": "2 9 5 4 3 6 2 1"
+            },
+            {
+              "id": 2,
+              "input": "3 5 1 2 6 9 7 4 8",
+              "output": "8 4 7 9 6 2 1 5 3"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "CSLT_Loop_002": {
+          "challengeID": "CSLT_Loop_002",
+          "code": "dec = input()\r\n\r\nbin = \"\"\r\n\r\nwhile True: \r\n    bin = str(dec%2) + bin\r\n    dec /= 2\r\n    if dec==0:\r\n        break\r\n\r\nprint(bin)",
+          "date": 1569651554089,
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.16,
+          "finished": 5,
+          "index": 4,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "11",
+              "isPublic": true,
+              "output": "1011"
+            },
+            {
+              "id": 2,
+              "input": "100",
+              "isPublic": true,
+              "output": "1100100"
+            },
+            {
+              "id": 3,
+              "input": "1023",
+              "isPublic": true,
+              "output": "1111111111"
+            },
+            {
+              "id": 4,
+              "input": "1",
+              "isPublic": true,
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "512",
+              "isPublic": true,
+              "output": "1000000000"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "PRIME-BASIC": {
+          "challengeID": "PRIME-BASIC",
+          "code": "process.stdin.once('data', (number) => {\r\n    console.log(isPrime(number) ? 1 : 0);\r\n    process.exit();\r\n})\r\n\r\nfunction isPrime(number) {\r\n    if (number < 2) {\r\n        return false;\r\n    }\r\n    if (number == 2) {\r\n        return true;\r\n    }\r\n    for (let i = 2; i*i <= number; i++) {\r\n        if (number % i == 0) {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n}\r\n\r\n",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 23.86,
+          "finished": 11,
+          "index": 10,
+          "languageID": 4,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "0",
+              "output": "0"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "1"
+            },
+            {
+              "id": 3,
+              "input": "3",
+              "output": "1"
+            },
+            {
+              "id": 4,
+              "input": "2267",
+              "output": "1"
+            },
+            {
+              "id": 5,
+              "input": "2731",
+              "output": "1"
+            },
+            {
+              "id": 6,
+              "input": "101693",
+              "output": "1"
+            },
+            {
+              "id": 7,
+              "input": "101692",
+              "output": "0"
+            },
+            {
+              "id": 8,
+              "input": "102233",
+              "output": "1"
+            },
+            {
+              "id": 9,
+              "input": "102232",
+              "output": "0"
+            },
+            {
+              "id": 10,
+              "input": "1008989",
+              "output": "1"
+            },
+            {
+              "id": 11,
+              "input": "1008988",
+              "output": "0"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "PRIME-COUNT": {
+          "challengeID": "PRIME-COUNT",
+          "code": "m = int(input())\r\nn = int(input())\r\n\r\narr = []\r\nfor i in range(n + 1):\r\n    arr.append(True)\r\n\r\narr[0] = False\r\narr[1] = False\r\n\r\ncount = n - m + 1\r\n\r\nfor i in range(2, n + 1):\r\n    j = i\r\n    if arr[j] == True:\r\n        while j<=n:\r\n                if j != i and arr[j] == True:    \r\n                        arr[j] = False\r\n                        if j >= m:\r\n                                count -= 1\r\n                j +=i\r\n                \r\n\r\n\r\nprint(count)",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 1.57,
+          "finished": 4,
+          "index": 3,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "2\n13",
+              "output": "6"
+            },
+            {
+              "id": 2,
+              "input": "3\n13",
+              "output": "5"
+            },
+            {
+              "id": 3,
+              "input": "7\n202",
+              "output": "43"
+            },
+            {
+              "id": 4,
+              "input": "3\n99999",
+              "output": "9591"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "PRIME-COUNT-BASIC": {
+          "challengeID": "PRIME-COUNT-BASIC",
+          "code": "import math\r\n\r\nm = int(input())\r\nn = int(input())\r\n\r\ndef isPrime(num):\r\n    if num == 0 or num == 1:\r\n        return 0\r\n    \r\n    if num == 2:\r\n        return 1\r\n\r\n    for i in range(2, num):\r\n        if num % i == 0:\r\n            return 0\r\n    return 1\r\n\r\ncount = 0\r\n\r\nfor i in range(m,n+1):\r\n    if isPrime(i) == 1:\r\n        count += 1\r\n\r\nprint(count)",
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.93,
+          "finished": 1,
+          "index": 0,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "5\n6789",
+              "output": "871"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "abc": {
+          "challengeID": "abc",
+          "code": "n = int(raw_input())\r\n\r\nprint(n*2)",
+          "date": 1561943789378,
+          "displayName": "Kiệt Nguyễn Tuấn",
+          "email": "kiettuannguyense@gmail.com",
+          "execTime": 0.09,
+          "finished": 2,
+          "index": 1,
+          "languageID": 0,
+          "testCases": [
+            {
+              "id": 1,
+              "input": "1",
+              "output": "2"
+            },
+            {
+              "id": 2,
+              "input": "2",
+              "output": "4"
+            }
+          ],
+          "uid": "tYZS4bwQAnP4giOH0hGmDaV0BE23"
+        },
+        "dummy": 0
+      }
+    }
+  }
+}

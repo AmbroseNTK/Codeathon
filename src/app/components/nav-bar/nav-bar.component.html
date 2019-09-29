@@ -4,6 +4,7 @@
     <button mat-button routerLink="/explore">Explore</button>
     <button mat-button>Competition</button>
     <button *ngIf="afAuth.auth.currentUser!=null" mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
+    <button *ngIf="afAuth.auth.currentUser!=null" mat-button routerLink="category">Category</button>
     <mat-menu #challengeMenu="matMenu">
       <button mat-menu-item routerLink="/create-challenge">Create</button>
       <button mat-menu-item routerLink="/create-challenge/modify">Edit</button>

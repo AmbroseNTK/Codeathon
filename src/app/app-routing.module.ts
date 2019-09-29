@@ -23,13 +23,12 @@ const routes: Routes = [{
   path: 'personal',
   loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule)
 },
+{ path: 'category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule) },
 {
   path: '',
   redirectTo: 'explore',
   pathMatch: 'full'
-},
-  { path: 'modules/Category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule) }
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

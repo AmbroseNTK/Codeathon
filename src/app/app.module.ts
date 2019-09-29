@@ -30,6 +30,8 @@ import { configReducer } from './states/reducers/config.reducer';
 import { ConfigEffect } from './states/effects/config.effect';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonalModule } from './modules/personal/personal.module';
+import { categoriesReducer } from './states/reducers/categories.reducer';
+import { CategoryEffects } from './states/effects/category.effect';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,15 @@ import { PersonalModule } from './modules/personal/personal.module';
     StoreModule.forRoot({
       user: userReducer,
       challenges: challengeReducer,
-      config: configReducer
+      config: configReducer,
+      categories: categoriesReducer
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
       UserEffect,
       ChallengeEffect,
-      ConfigEffect
+      ConfigEffect,
+      CategoryEffects
     ]),
     MatMenuModule,
     MatTableModule,
