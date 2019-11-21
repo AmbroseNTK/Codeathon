@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [CategoryComponent, CategoryListComponent],
@@ -23,7 +24,8 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     MatButtonModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
   ],
   entryComponents: [CategoryListComponent]
 })

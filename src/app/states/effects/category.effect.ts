@@ -6,7 +6,7 @@ import { Observable, from, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Category } from '../models/category.model';
-import { CategoriesService } from 'src/app/services/categories.service';
+import { CategoriesService } from '../../services/categories.service';
 
 export type CategoryAction = CategoryActions.Action;
 

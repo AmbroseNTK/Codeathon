@@ -45,6 +45,10 @@ export class ChallengeService {
     this.store.dispatch(new Update({ challengeID: id, data: data }));
   }
 
+  public getOwn(uid) {
+    return this.challenges.filter((challenge) => challenge["ownerID"] == uid);
+  }
+
   public delete(id: string) {
     if (this.afAuth.auth.currentUser != null) {
       this.db.object("challenges/" + id).remove().then(() => {

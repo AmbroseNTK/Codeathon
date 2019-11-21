@@ -1,12 +1,14 @@
 <h1 mat-dialog-title>Existing categories</h1>
 <div mat-dialog-content>
-    <mat-list role="list">
-        <mat-list-item role="listitem">Item 1</mat-list-item>
-        <mat-list-item role="listitem">Item 2</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item>
-    </mat-list>
+    <mat-form-field>
+        <mat-select [(ngModel)]="selected">
+            <mat-option *ngFor="let cat of categoriesService.categories.ownItems" [value]="cat">
+                {{cat.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
 <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="selected" cdkFocusInitial>Select</button>
     <button mat-button (click)="onNoClick()">No</button>
-    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Select</button>
 </div>

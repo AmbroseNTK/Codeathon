@@ -5,25 +5,42 @@
         </mat-card-header>
         <mat-card-content>
             <mat-form-field style="width: 80%">
-                <input matInput placeholder="ID" [(ngModel)]="id" />
+                <input matInput placeholder="ID" [(ngModel)]="category.id" />
             </mat-form-field>
-            <button mat-button *ngIf="categoriesService.categories.items.length!=0" (click)="onClickSelect()">Select to
+            <button mat-button *ngIf="categoriesService.categories.items.length!=0" (click)="openDialog()">Select to
                 modify</button>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name" [(ngModel)]="name" />
+                <input matInput placeholder="Name" [(ngModel)]="category.name" />
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Description" [(ngModel)]="description"></textarea>
+                <textarea matInput placeholder="Description" [(ngModel)]="category.description"></textarea>
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Image Url" [(ngModel)]="image_url" />
+                <input matInput placeholder="Image Url" [(ngModel)]="category.imageUrl" />
             </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Select challenge</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let challenge of ownChallenge" [value]="challenge['challengeID']">
+                        {{challenge["challengeID"]}} - {{challenge["title"]}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <p>Challenge list</p>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let challenge of category.challengeList">{{challenge}}
+                </mat-list-item>
+            </mat-list>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button color="primary">Create</button>
+            <button mat-button *ngIf="createMode" color="primary">Create</button>
+            <button mat-button *ngIf="!createMode" color="primary">Update</button>
+            <button mat-button *ngIf="!createMode" color="primary">Delete</button>
         </mat-card-actions>
     </mat-card>
 
