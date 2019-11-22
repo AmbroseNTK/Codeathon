@@ -2,6 +2,7 @@
   <img width="70" src="./assets/logo-white.svg" />
   <div style="margin-left: 20px;">
     <button mat-button routerLink="/explore">Explore</button>
+    <button mat-button routerLink="people">People</button>
     <button mat-button>Competition</button>
     <button *ngIf="afAuth.auth.currentUser!=null" mat-button [matMenuTriggerFor]="challengeMenu">Challenge</button>
     <button *ngIf="afAuth.auth.currentUser!=null" mat-button routerLink="category">Category</button>

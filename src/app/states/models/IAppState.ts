@@ -8,5 +8,5 @@ export default interface IAppState {
   challenges: Challenge;
   config: Config;
   categories: Categories;
-  people: {}
+  people: []
 }
