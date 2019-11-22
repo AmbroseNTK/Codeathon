@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PersonalModule } from './modules/personal/personal.module';
 import { categoriesReducer } from './states/reducers/categories.reducer';
 import { CategoryEffects } from './states/effects/category.effect';
-import { peopleReducer } from './states/reducers/people.reducer';
+import * as peopleReducer from './states/reducers/people.reducer';
 import { PeopleEffects } from './states/effects/people.effect';
 
 @NgModule({
@@ -63,7 +63,7 @@ import { PeopleEffects } from './states/effects/people.effect';
       challenges: challengeReducer,
       config: configReducer,
       categories: categoriesReducer,
-      people: peopleReducer
+      people: peopleReducer.reducer
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 

@@ -39,6 +39,7 @@ import { SharedModule } from '../shared/shared.module';
     MatProgressSpinnerModule,
     SharedModule
   ],
-  entryComponents: [SolutionDialogComponent]
+  entryComponents: [SolutionDialogComponent],
+  exports: [SolutionDialogComponent]
 })
 export class WorkspaceModule { }
