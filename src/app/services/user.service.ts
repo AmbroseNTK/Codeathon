@@ -7,6 +7,7 @@ import { Login } from '../states/actions/user.action';
 import { ChallengeService } from './challenge.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CategoriesService } from './categories.service';
+import { PeopleService } from './people.service';
 
 @Injectable({
   providedIn: 'root'

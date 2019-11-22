@@ -32,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PersonalModule } from './modules/personal/personal.module';
 import { categoriesReducer } from './states/reducers/categories.reducer';
 import { CategoryEffects } from './states/effects/category.effect';
+import { peopleReducer } from './states/reducers/people.reducer';
+import { PeopleEffects } from './states/effects/people.effect';
 
 @NgModule({
   declarations: [
@@ -49,19 +51,22 @@ import { CategoryEffects } from './states/effects/category.effect';
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
-    StoreModule.forRoot({
-      user: userReducer,
-      challenges: challengeReducer,
-      config: configReducer,
-      categories: categoriesReducer
-    }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
       UserEffect,
       ChallengeEffect,
       ConfigEffect,
-      CategoryEffects
+      CategoryEffects,
+      PeopleEffects
     ]),
+    StoreModule.forRoot({
+      user: userReducer,
+      challenges: challengeReducer,
+      config: configReducer,
+      categories: categoriesReducer,
+      people: peopleReducer
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,

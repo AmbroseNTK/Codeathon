@@ -11,6 +11,7 @@ import { CategoriesService } from './services/categories.service';
 export class AppComponent {
   title = 'webapp';
   constructor(private challengeService: ChallengeService, private configService: ConfigService) {
+    this.configService.fetch();
     this.challengeService.fetch();
   }
 }

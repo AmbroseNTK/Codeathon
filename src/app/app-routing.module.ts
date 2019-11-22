@@ -28,7 +28,8 @@ const routes: Routes = [{
   path: '',
   redirectTo: 'explore',
   pathMatch: 'full'
-}];
+},
+{ path: 'people', loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
