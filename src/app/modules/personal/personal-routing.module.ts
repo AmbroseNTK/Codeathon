@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
+
+import { PersonalComponent } from './personal.component';
+import { CompetitionComponent } from './competition/competition.component';
 
 const routes: Routes = [{
-  path: "",
-  component: MenuComponent,
-  pathMatch: "full"
+  path: '', component: PersonalComponent, children: [
+    {
+      path: "competition",
+      component: CompetitionComponent
+    }
+  ]
 }];
 
 @NgModule({

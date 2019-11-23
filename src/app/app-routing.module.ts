@@ -19,17 +19,15 @@ const routes: Routes = [{
   path: 'solving',
   loadChildren: () => import('./modules/workspace/workspace.module').then(m => m.WorkspaceModule)
 },
-{
-  path: 'personal',
-  loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule)
-},
 { path: 'category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule) },
+
+{ path: 'people', loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule) },
+{ path: 'personal', loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule) },
 {
   path: '',
   redirectTo: 'explore',
   pathMatch: 'full'
-},
-{ path: 'people', loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule) }];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
