@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengeService } from '../../../services/challenge.service';
 import { ChallengeEntityModel } from '../../../states/models/challenge.entity.model';
 import { ConfigService } from '../../../services/config.service';
@@ -38,7 +38,7 @@ export class CodingComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  constructor(private activatedRoute: ActivatedRoute, private dialog: MatDialog, private afAuth: AngularFireAuth, private challengeService: ChallengeService, private configService: ConfigService, private httpClient: HttpClient) {
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private dialog: MatDialog, private afAuth: AngularFireAuth, private challengeService: ChallengeService, private configService: ConfigService, private httpClient: HttpClient) {
     this.activatedRoute.params.subscribe(params => {
       this.challengeID = params['challengeID'];
       this.challengeService.challenges$.subscribe(value => {
@@ -122,6 +122,10 @@ export class CodingComponent implements OnInit {
       width: '90%',
       data: { language: obj['language'], code: obj['code'] }
     });
+  }
+
+  onClickEmail(email) {
+    this.router.navigate(["/people/profile/" + email]);
   }
 
 }
