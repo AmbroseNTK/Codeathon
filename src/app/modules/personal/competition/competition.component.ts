@@ -11,4 +11,16 @@ export class CompetitionComponent implements OnInit {
   ngOnInit() {
   }
 
+  hasExp = false;
+  hasDuration = false;
+
+  public changeExp(event) {
+    this.hasExp = event.checked;
+    console.log(event);
+  }
+
+  public changeDuration(event) {
+    this.hasDuration = event.checked;
+  }
+
 }

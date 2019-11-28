@@ -1,1 +1,46 @@
-<p>competition works!</p>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            Competition
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+        <button mat-button>Save draft</button>
+        <button mat-button>Edit</button>
+        <button mat-button>Publish</button>
+        <button mat-button>Delete</button>
+    </mat-card-actions>
+    <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Short description"></textarea>
+        </mat-form-field>
+        <button mat-button class="example-full-width" (click)="coverImageInput.click()">
+            Cover image
+            <input #coverImageInput placeholder="Cover image" type="file" style="display: none;" />
+        </button>
+        <button mat-button class="example-full-width" (click)="medalIconInput.click()">
+            Medal icon
+            <input #medalIconInput placeholder="Medal icon" type="file" style="display: none;">
+        </button>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Description (show as HTML document)" style="height: 200px;"></textarea>
+        </mat-form-field>
+
+        <mat-slide-toggle color="primary" (change)="changeExp($event)">Has expired date</mat-slide-toggle>
+
+        <mat-form-field *ngIf="hasExp" class="example-full-width">
+            <input matInput placeholder="Expired date" type="datetime-local">
+        </mat-form-field>
+
+        <mat-slide-toggle color="primary" (change)="changeDuration($event)">Has duration</mat-slide-toggle>
+        <br>
+        <mat-form-field *ngIf="hasDuration" class="example-full-width">
+            <input matInput placeholder="Duration (hours)" type="number">
+        </mat-form-field>
+
+    </mat-card-content>
+</mat-card>
