@@ -11,14 +11,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TimeToDatePipe } from './pipes/time-to-date.pipe';
 import { SpinLoadingComponent } from './spin-loading/spin-loading.component';
 import { SimpleTableComponent } from './simple-table/simple-table.component';
-
+import { ConfirmDialogComponent, ConfirmDialogData } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [ChallengeListComponent, TimeToDatePipe, SpinLoadingComponent, SimpleTableComponent],
+  declarations: [ChallengeListComponent, TimeToDatePipe, SpinLoadingComponent, SimpleTableComponent, ConfirmDialogComponent],
   exports: [
     ChallengeListComponent,
     TimeToDatePipe,
     SpinLoadingComponent,
-    SimpleTableComponent
+    SimpleTableComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,10 @@ import { SimpleTableComponent } from './simple-table/simple-table.component';
     MatSortModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+    MatDialogModule,
+    FormsModule
+  ],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }

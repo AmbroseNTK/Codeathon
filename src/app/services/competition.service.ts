@@ -66,4 +66,30 @@ export class CompetitionService {
     })
   }
 
+  public getMedal(id) {
+    return new Promise<string>((resolve, reject) => {
+      this.config.config$.subscribe(config => {
+        try {
+          resolve(config.backend + "/resources/images/competition/" + id + "/medalIcon");
+        }
+        catch (e) {
+          reject("File not found");
+        }
+      })
+    })
+  }
+
+  public getCover(id) {
+    return new Promise<string>((resolve, reject) => {
+      this.config.config$.subscribe(config => {
+        try {
+          resolve(config.backend + "/resources/images/competition/" + id + "/coverImage");
+        }
+        catch (e) {
+          reject("File not found");
+        }
+      })
+    })
+  }
+
 }

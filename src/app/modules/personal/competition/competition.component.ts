@@ -7,6 +7,8 @@ import IAppState from '../../../states/models/IAppState';
 import { FetchOwn } from '../../../states/actions/challenge.action';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   templateUrl: './competition.component.html',
@@ -19,6 +21,7 @@ export class CompetitionComponent implements OnInit {
     public auth: AngularFireAuth,
     public challenge: ChallengeService,
     public snackbar: MatSnackBar,
+    public dialog: MatDialog,
     public store: Store<IAppState>) { }
 
   ngOnInit() {
@@ -32,10 +35,12 @@ export class CompetitionComponent implements OnInit {
         console.log(data);
         let result = <[any]>data["data"];
         for (let i = 0; i < result.length; i++) {
-          if (result[i].publish == undefined || result[i].publish == false) {
-            result[i] = { ...result[i], publish: true };
+          if (result[i].isPublished == undefined || result[i].isPublished == "false") {
+            result[i] = { ...result[i], publish: true, modify: true, delete: true };
           }
-          result[i] = { ...result[i], monitor: true, modify: true, delete: true };
+          else {
+            result[i] = { ...result[i], monitor: true, delete: true };
+          }
         }
         this.avalCompetition = result;
       })
@@ -54,6 +59,8 @@ export class CompetitionComponent implements OnInit {
   prerequisite = "";
   showEditForm = false;
   competitionEditMode = false;
+  medalUrl = "";
+  coverUrl = "";
 
   ownChallenges = [];
   challengeList = [];
@@ -185,7 +192,7 @@ export class CompetitionComponent implements OnInit {
     this.challengeDataSource = new MatTableDataSource(this.challengeList);
   }
 
-  onCompetitionTableAction(action) {
+  async onCompetitionTableAction(action) {
     console.log(action);
     if (action.action.name == "modify") {
       this.showEditForm = true;
@@ -204,18 +211,28 @@ export class CompetitionComponent implements OnInit {
       this.prerequisite = "";
       this.hasPrerequisite = false;
       this.enableUpdate = false;
-
+      this.medalUrl = await this.competition.getMedal(this.id);
+      this.coverUrl = await this.competition.getCover(this.id);
     }
     else if (action.action.name == "delete") {
-      this.competition.delete(action.element.id, this.auth.auth.currentUser.uid).then(res => {
-        if (res['status'] == "success") {
-          this.snackbar.open("Delete successfully", "OK", { duration: 2000 });
-          window.location.reload();
+      this.dialog.open(ConfirmDialogComponent, {
+        width: "250px",
+        data: {
+          title: "Confirm to delete",
+          targetValue: action.element.id, onCorrect: () => {
+            this.competition.delete(action.element.id, this.auth.auth.currentUser.uid).then(res => {
+              if (res['status'] == "success") {
+                this.snackbar.open("Delete successfully", "OK", { duration: 2000 });
+                window.location.reload();
+              }
+              else {
+                this.snackbar.open("Error: " + res['message'], "OK", { duration: 2000 });
+              }
+            })
+          }
         }
-        else {
-          this.snackbar.open("Error: " + res['message'], "OK", { duration: 2000 });
-        }
-      })
+      });
+
     }
   }
 

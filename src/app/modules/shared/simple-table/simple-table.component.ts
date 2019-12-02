@@ -52,7 +52,7 @@ export class SimpleTableComponent implements OnInit {
   }
 
   public checkButton(element, action) {
-    return (element[action.name] != undefined && element[action.name] != false);
+    return (element[action.name] != undefined && element[action.name]);
   }
 
 }

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content style="width:100%">
+    <mat-form-field>
+
+        <input matInput [placeholder]="'Retyping '+data.targetValue" [(ngModel)]="retypedData">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+    <button mat-button *ngIf="isMatched()" (click)="onClickOK()" color="warn">Proceed</button>
+</div>

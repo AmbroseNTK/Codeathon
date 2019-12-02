@@ -15,13 +15,18 @@
 </mat-card>
 <mat-card *ngIf="showEditForm" class="card">
     <mat-card-header>
+        <div mat-card-avatar>
+            <img [src]="medalUrl" style="width: 40px;border-radius: 50%;" />
+        </div>
         <mat-card-title *ngIf="!competitionEditMode">
             New Competition
         </mat-card-title>
+
         <mat-card-title *ngIf="competitionEditMode">
             Edit Competition
         </mat-card-title>
     </mat-card-header>
+    <img mat-card-image [src]="coverUrl" style="height: auto;width:auto;max-height: 200px;" alt="">
     <mat-card-content>
         <mat-form-field class="example-full-width">
             <input matInput placeholder="ID" [(ngModel)]="id" />
@@ -35,7 +40,7 @@
         <button mat-button class="example-full-width" (click)="coverImageInput.click()">
             Cover image
             <input #coverImageInput placeholder="Cover image" type="file" style="display: none;"
-                (change)="converImage = $event.target.files.item(0)" />
+                (change)="coverImage = $event.target.files.item(0)" />
         </button>
         <button mat-button class="example-full-width" (click)="medalIconInput.click()">
             Medal icon
@@ -99,13 +104,6 @@
             </mat-card-actions>
 
         </mat-card>
-
-
-
-
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search challenge">
-        </mat-form-field>
 
         <table mat-table [dataSource]="challengeDataSource" class="mat-elevation-z8">
 

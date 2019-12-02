@@ -22,7 +22,10 @@ const routes: Routes = [{
 { path: 'category', loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule) },
 
 { path: 'people', loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule) },
-{ path: 'personal', loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule) },
+{
+  path: 'personal', loadChildren: () => import('./modules/personal/personal.module').then(m => m.PersonalModule),
+  canActivate: [AuthGuard]
+},
 {
   path: '',
   redirectTo: 'explore',
