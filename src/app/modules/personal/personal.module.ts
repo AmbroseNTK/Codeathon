@@ -13,7 +13,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-
+import { SharedModule } from '../shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [PersonalComponent, CompetitionComponent],
   imports: [
@@ -27,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     MatSlideToggleModule,
     MatTableModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    SharedModule
   ]
 })
 export class PersonalModule { }

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import IAppState from '../../../states/models/IAppState';
 import { FetchOwn } from '../../../states/actions/challenge.action';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './competition.component.html',
@@ -17,6 +18,7 @@ export class CompetitionComponent implements OnInit {
     public competition: CompetitionService,
     public auth: AngularFireAuth,
     public challenge: ChallengeService,
+    public snackbar: MatSnackBar,
     public store: Store<IAppState>) { }
 
   ngOnInit() {
@@ -25,6 +27,19 @@ export class CompetitionComponent implements OnInit {
       this.ownChallenges = Object.keys(data.list);
     });
     this.updateTable();
+    this.auth.user.subscribe((usr) => {
+      this.competition.get(usr.uid).then((data) => {
+        console.log(data);
+        let result = <[any]>data["data"];
+        for (let i = 0; i < result.length; i++) {
+          if (result[i].publish == undefined || result[i].publish == false) {
+            result[i] = { ...result[i], publish: true };
+          }
+          result[i] = { ...result[i], monitor: true, modify: true, delete: true };
+        }
+        this.avalCompetition = result;
+      })
+    })
   }
 
   id = "";
@@ -33,13 +48,16 @@ export class CompetitionComponent implements OnInit {
   description = "";
   expiredDate = "";
   duration = -1;
-  converImage = undefined;
+  coverImage = undefined;
   medalIcon = undefined;
   point = 0;
   prerequisite = "";
+  showEditForm = false;
+  competitionEditMode = false;
 
   ownChallenges = [];
   challengeList = [];
+  avalCompetition = [];
 
   hasExp = false;
   hasDuration = false;
@@ -67,8 +85,9 @@ export class CompetitionComponent implements OnInit {
     }
   }
 
-  onClickSaveDraft() {
-    this.competition.create({
+  async onClickSaveDraft() {
+    console.log(this.expiredDate);
+    let result = await this.competition.create({
       id: this.id,
       ownerId: this.auth.auth.currentUser.uid,
       name: this.name,
@@ -77,7 +96,37 @@ export class CompetitionComponent implements OnInit {
       challenges: JSON.stringify(this.competition.arrayToJson(this.challengeList)),
       expiredDate: this.expiredDate,
       duration: this.duration
-    }, this.converImage, this.medalIcon);
+    }, this.coverImage, this.medalIcon);
+    if (result["status"] == "success") {
+      this.snackbar.open("Create new competition successfully", "OK", { duration: 2000 });
+      window.location.reload();
+    }
+    else {
+      this.snackbar.open("Error: " + result["message"], "OK", { duration: 2000 });
+    }
+
+  }
+
+  async onClickUpdateCompetition() {
+    let result = await this.competition.update({
+      id: this.id,
+      ownerId: this.auth.auth.currentUser.uid,
+      name: this.name,
+      shortDescription: this.shortDescription,
+      description: this.description,
+      challenges: JSON.stringify(this.competition.arrayToJson(this.challengeList)),
+      expiredDate: this.expiredDate,
+      duration: this.duration,
+      isPublished: false
+    }, this.coverImage, this.medalIcon);
+    if (result["status"] == "success") {
+      this.snackbar.open("Update competition successfully", "OK", { duration: 2000 });
+      window.location.reload();
+    }
+    else {
+      this.snackbar.open("Error: " + result["message"], "OK", { duration: 2000 });
+    }
+
   }
 
   onClickAddChallenge() {
@@ -117,4 +166,58 @@ export class CompetitionComponent implements OnInit {
   updateTable() {
     this.challengeDataSource = new MatTableDataSource(this.challengeList);
   }
+
+  onClickAddNewCompetition() {
+    this.showEditForm = true;
+    this.competitionEditMode = false;
+    this.id = "";
+    this.name = "";
+    this.shortDescription = "";
+    this.description = "";
+    this.expiredDate = "";
+    this.duration = -1;
+    this.challengeList = [];
+    this._challenge = "";
+    this.point = 0;
+    this.prerequisite = "";
+    this.hasPrerequisite = false;
+    this.enableUpdate = false;
+    this.challengeDataSource = new MatTableDataSource(this.challengeList);
+  }
+
+  onCompetitionTableAction(action) {
+    console.log(action);
+    if (action.action.name == "modify") {
+      this.showEditForm = true;
+      this.competitionEditMode = true;
+      console.log(action.element);
+      this.id = action.element.id;
+      this.name = action.element.name;
+      this.shortDescription = action.element.shortDescription;
+      this.description = action.element.description;
+      this.expiredDate = action.element.expiredDate;
+      this.duration = action.element.duration;
+      this.challengeList = action.element.challenges == undefined ? [] : action.element.challenges;
+      this.challengeDataSource = new MatTableDataSource(this.challengeList);
+      this._challenge = "";
+      this.point = 0;
+      this.prerequisite = "";
+      this.hasPrerequisite = false;
+      this.enableUpdate = false;
+
+    }
+    else if (action.action.name == "delete") {
+      this.competition.delete(action.element.id, this.auth.auth.currentUser.uid).then(res => {
+        if (res['status'] == "success") {
+          this.snackbar.open("Delete successfully", "OK", { duration: 2000 });
+          window.location.reload();
+        }
+        else {
+          this.snackbar.open("Error: " + res['message'], "OK", { duration: 2000 });
+        }
+      })
+    }
+  }
+
+
 }

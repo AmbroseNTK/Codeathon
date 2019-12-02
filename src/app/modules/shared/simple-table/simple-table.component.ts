@@ -51,6 +51,10 @@ export class SimpleTableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  public checkButton(element, action) {
+    return (element[action.name] != undefined && element[action.name] != false);
+  }
+
 }
 
 export class ActionTableButton {

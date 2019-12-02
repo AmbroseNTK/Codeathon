@@ -3,16 +3,23 @@
         <mat-card-title>Available competition</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-
+        <app-simple-table
+            [cols]="[{name:'id',title:'ID'},{name:'name',title:'Name'},{name:'expiredDate',title:'Expired date'}]"
+            [actions]="[{name:'publish',title:'Publish',color:'primary'},{name:'monitor',title:'Monitor'},{name:'modify',title:'Modify'},{name:'delete',title:'Delete',color:'warn'}]"
+            [dataList]="avalCompetition" (onAction)="onCompetitionTableAction($event)">
+        </app-simple-table>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button color="primary">Add new</button>
+        <button mat-button color="primary" (click)="onClickAddNewCompetition()">Add new</button>
     </mat-card-actions>
 </mat-card>
-<mat-card class="card">
+<mat-card *ngIf="showEditForm" class="card">
     <mat-card-header>
-        <mat-card-title>
+        <mat-card-title *ngIf="!competitionEditMode">
             New Competition
+        </mat-card-title>
+        <mat-card-title *ngIf="competitionEditMode">
+            Edit Competition
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -27,26 +34,30 @@
         </mat-form-field>
         <button mat-button class="example-full-width" (click)="coverImageInput.click()">
             Cover image
-            <input #coverImageInput placeholder="Cover image" type="file" style="display: none;" />
+            <input #coverImageInput placeholder="Cover image" type="file" style="display: none;"
+                (change)="converImage = $event.target.files.item(0)" />
         </button>
         <button mat-button class="example-full-width" (click)="medalIconInput.click()">
             Medal icon
-            <input #medalIconInput placeholder="Medal icon" type="file" style="display: none;">
+            <input #medalIconInput placeholder="Medal icon" type="file" style="display: none;"
+                (change)="medalIcon=$event.target.files.item(0)">
         </button>
         <mat-form-field class="example-full-width">
             <textarea matInput [(ngModel)]="description" placeholder="Description (show as HTML document)"
                 style="height: 200px;"></textarea>
         </mat-form-field>
 
-        <mat-slide-toggle color="primary" (change)="changeExp($event)">Has expired date</mat-slide-toggle>
+        <mat-slide-toggle color="primary" (change)="changeExp($event)" [checked]="expiredDate!=''">Has expired date
+        </mat-slide-toggle>
 
-        <mat-form-field *ngIf="hasExp" class="example-full-width">
+        <mat-form-field *ngIf="hasExp || expiredDate!=''" class="example-full-width">
             <input matInput [(ngModel)]="expiredDate" placeholder="Expired date" type="datetime-local">
         </mat-form-field>
 
-        <mat-slide-toggle color="primary" (change)="changeDuration($event)">Has duration</mat-slide-toggle>
+        <mat-slide-toggle color="primary" (change)="changeDuration($event)" [checked]="duration!=-1">Has duration
+        </mat-slide-toggle>
         <br>
-        <mat-form-field *ngIf="hasDuration" class="example-full-width">
+        <mat-form-field *ngIf="hasDuration || duration!=-1" class="example-full-width">
             <input matInput [(ngModel)]="duration" placeholder="Duration (hours)" type="number">
         </mat-form-field>
 
@@ -69,9 +80,10 @@
                     <input matInput type="number" placeholder="Point" [(ngModel)]="point" />
                 </mat-form-field>
 
-                <mat-slide-toggle color="primary" (change)="changePrerequisite($event)">Has prerequisite
+                <mat-slide-toggle [checked]="prerequisite!=''" color="primary" (change)="changePrerequisite($event)">Has
+                    prerequisite
                 </mat-slide-toggle>
-                <mat-form-field *ngIf="hasPrerequisite">
+                <mat-form-field *ngIf="hasPrerequisite||prerequisite!=''">
                     <mat-label>Select assigned challenge</mat-label>
                     <mat-select [(ngModel)]="prerequisite">
                         <mat-option *ngFor="let challenge of challengeList" [value]="challenge.id">
@@ -139,6 +151,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button color="primary" (click)="onClickSaveDraft()">Save draft</button>
+        <button *ngIf="!competitionEditMode" mat-button color="primary" (click)="onClickSaveDraft()">Save draft</button>
+        <button *ngIf="competitionEditMode" mat-button color="primary"
+            (click)="onClickUpdateCompetition()">Update</button>
     </mat-card-actions>
 </mat-card>
