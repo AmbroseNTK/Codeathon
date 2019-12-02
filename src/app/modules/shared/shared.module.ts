@@ -17,7 +17,8 @@ import { SimpleTableComponent } from './simple-table/simple-table.component';
   exports: [
     ChallengeListComponent,
     TimeToDatePipe,
-    SpinLoadingComponent
+    SpinLoadingComponent,
+    SimpleTableComponent
   ],
   imports: [
     CommonModule,
