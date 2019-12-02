@@ -10,9 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TimeToDatePipe } from './pipes/time-to-date.pipe';
 import { SpinLoadingComponent } from './spin-loading/spin-loading.component';
+import { SimpleTableComponent } from './simple-table/simple-table.component';
 
 @NgModule({
-  declarations: [ChallengeListComponent, TimeToDatePipe, SpinLoadingComponent],
+  declarations: [ChallengeListComponent, TimeToDatePipe, SpinLoadingComponent, SimpleTableComponent],
   exports: [
     ChallengeListComponent,
     TimeToDatePipe,

@@ -1,22 +1,29 @@
 <mat-card class="card">
     <mat-card-header>
-        <mat-card-title>
-            Competition
-        </mat-card-title>
+        <mat-card-title>Available competition</mat-card-title>
     </mat-card-header>
-    <mat-card-actions>
-        <button mat-button>Save draft</button>
-        <button mat-button>Edit</button>
-        <button mat-button>Publish</button>
-        <button mat-button>Delete</button>
-    </mat-card-actions>
     <mat-card-content>
 
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary">Add new</button>
+    </mat-card-actions>
+</mat-card>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            New Competition
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name" />
+            <input matInput placeholder="ID" [(ngModel)]="id" />
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Short description"></textarea>
+            <input matInput placeholder="Name" [(ngModel)]="name" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Short description" [(ngModel)]="shortDescription"></textarea>
         </mat-form-field>
         <button mat-button class="example-full-width" (click)="coverImageInput.click()">
             Cover image
@@ -27,20 +34,111 @@
             <input #medalIconInput placeholder="Medal icon" type="file" style="display: none;">
         </button>
         <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Description (show as HTML document)" style="height: 200px;"></textarea>
+            <textarea matInput [(ngModel)]="description" placeholder="Description (show as HTML document)"
+                style="height: 200px;"></textarea>
         </mat-form-field>
 
         <mat-slide-toggle color="primary" (change)="changeExp($event)">Has expired date</mat-slide-toggle>
 
         <mat-form-field *ngIf="hasExp" class="example-full-width">
-            <input matInput placeholder="Expired date" type="datetime-local">
+            <input matInput [(ngModel)]="expiredDate" placeholder="Expired date" type="datetime-local">
         </mat-form-field>
 
         <mat-slide-toggle color="primary" (change)="changeDuration($event)">Has duration</mat-slide-toggle>
         <br>
         <mat-form-field *ngIf="hasDuration" class="example-full-width">
-            <input matInput placeholder="Duration (hours)" type="number">
+            <input matInput [(ngModel)]="duration" placeholder="Duration (hours)" type="number">
         </mat-form-field>
 
+        <mat-card class="mat-elevation-z8" style="margin: 20px;">
+            <mat-card-header>
+                <mat-card-title>
+                    <h3 style="color:green">Challenges assignment</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Select challenge</mat-label>
+                    <mat-select [(ngModel)]="_challenge">
+                        <mat-option *ngFor="let challenge of ownChallenges" [value]="challenge">
+                            {{challenge}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Point" [(ngModel)]="point" />
+                </mat-form-field>
+
+                <mat-slide-toggle color="primary" (change)="changePrerequisite($event)">Has prerequisite
+                </mat-slide-toggle>
+                <mat-form-field *ngIf="hasPrerequisite">
+                    <mat-label>Select assigned challenge</mat-label>
+                    <mat-select [(ngModel)]="prerequisite">
+                        <mat-option *ngFor="let challenge of challengeList" [value]="challenge.id">
+                            {{challenge.id}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-button *ngIf="!enableUpdate" color="primary" (click)="onClickAddChallenge()">OK</button>
+                <button mat-button *ngIf="enableUpdate" color="primary" (click)="updateChallenge()">Update</button>
+            </mat-card-actions>
+
+        </mat-card>
+
+
+
+
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search challenge">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="challengeDataSource" class="mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="point">
+                <th mat-header-cell *matHeaderCellDef> Point </th>
+                <td mat-cell *matCellDef="let element"> {{element.point}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="prerequisite">
+                <th mat-header-cell *matHeaderCellDef> Prerequisite </th>
+                <td mat-cell *matCellDef="let element"> {{element.prerequisite}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="update">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <button mat-button (click)="onClickUpdateChallenge(element,i)">Update</button>
+                </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button color="warn" (click)="onClickDeleteChallenge(element)">Delete</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <button mat-button *ngIf="enableUpdate" (click)="enableUpdate = false">Add more challenge</button>
+
     </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary" (click)="onClickSaveDraft()">Save draft</button>
+    </mat-card-actions>
 </mat-card>

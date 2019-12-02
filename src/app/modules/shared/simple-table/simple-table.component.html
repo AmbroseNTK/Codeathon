@@ -1,0 +1,26 @@
+<mat-form-field *ngIf="hasSearch">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Data Columns -->
+    <ng-container *ngFor="let col of cols" [matColumnDef]="col.name">
+        <th mat-header-cell *matHeaderCellDef> {{col.title}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[col.name]}} </td>
+    </ng-container>
+
+    <!-- Action Columns -->
+    <ng-container *ngFor="let action of actions" [matColumnDef]="action.name">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+            <button *ngIf="action.color==undefined" mat-button
+                (click)="onClickAction(i,element,action)">{{action.title}}</button>
+            <button *ngIf="action.color!=undefined" mat-button [color]="action.color"
+                (click)="onClickAction(i,element,action)">{{action.title}}</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="getDisplayColumns()"></tr>
+    <tr mat-row *matRowDef="let row; columns: getDisplayColumns();"></tr>
+</table>

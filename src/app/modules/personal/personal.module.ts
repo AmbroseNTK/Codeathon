@@ -10,6 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { CompetitionComponent } from './competition/competition.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PersonalComponent, CompetitionComponent],
@@ -21,7 +24,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSidenavModule,
     MatCardModule,
     MatInputModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class PersonalModule { }
