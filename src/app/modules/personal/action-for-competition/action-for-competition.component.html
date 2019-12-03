@@ -1,0 +1,26 @@
+<p>{{data.title}}</p>
+<mat-nav-list>
+    <a *ngIf="data.allowPublish" mat-list-item (click)="onClick('publish',data.element)">
+        <span mat-line>Publish</span>
+        <span mat-line></span>
+    </a>
+
+    <a *ngIf="data.allowMonitor" mat-list-item (click)="onClick('monitor',data.element)">
+        <span mat-line>Monitor</span>
+        <span mat-line>View activities and statitical report</span>
+    </a>
+
+    <a *ngIf="data.allowModify" mat-list-item (click)="onClick('modify',data.element)">
+        <span mat-line>Modify</span>
+        <span mat-line>Modify competition information</span>
+    </a>
+
+    <a *ngIf="data.allowInvite" mat-list-item (click)="onClick('invite',data.element)">
+        <span mat-line>Invite</span>
+        <span mat-line>Only invited people can join</span>
+    </a>
+    <a *ngIf="data.allowDelete" mat-list-item (click)="onClick('delete',data.element)">
+        <span mat-line>Delete</span>
+        <span mat-line>Delete all information</span>
+    </a>
+</mat-nav-list>

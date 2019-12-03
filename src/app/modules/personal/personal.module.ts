@@ -15,8 +15,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+
+import { ActionForCompetitionComponent } from './action-for-competition/action-for-competition.component';
 @NgModule({
-  declarations: [PersonalComponent, CompetitionComponent],
+  declarations: [PersonalComponent, CompetitionComponent, ActionForCompetitionComponent],
   imports: [
     CommonModule,
     PersonalRoutingModule,
@@ -30,7 +34,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     FormsModule,
     MatSnackBarModule,
+    MatListModule,
+    MatBottomSheetModule,
     SharedModule
-  ]
+  ],
+  entryComponents: [ActionForCompetitionComponent]
 })
 export class PersonalModule { }

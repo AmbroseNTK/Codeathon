@@ -5,8 +5,8 @@
     <mat-card-content>
         <app-simple-table
             [cols]="[{name:'id',title:'ID'},{name:'name',title:'Name'},{name:'expiredDate',title:'Expired date'}]"
-            [actions]="[{name:'publish',title:'Publish',color:'primary'},{name:'monitor',title:'Monitor'},{name:'modify',title:'Modify'},{name:'delete',title:'Delete',color:'warn'}]"
-            [dataList]="avalCompetition" (onAction)="onCompetitionTableAction($event)">
+            [actions]="[{name:'action',title:'Action',color:'primary'}]" [dataList]="avalCompetition"
+            (onAction)="onCompetitionTableAction($event)">
         </app-simple-table>
     </mat-card-content>
     <mat-card-actions>

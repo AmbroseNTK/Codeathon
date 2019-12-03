@@ -9,6 +9,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ActionForCompetitionComponent } from '../action-for-competition/action-for-competition.component';
 
 @Component({
   templateUrl: './competition.component.html',
@@ -22,6 +24,7 @@ export class CompetitionComponent implements OnInit {
     public challenge: ChallengeService,
     public snackbar: MatSnackBar,
     public dialog: MatDialog,
+    public bottomSheet: MatBottomSheet,
     public store: Store<IAppState>) { }
 
   ngOnInit() {
@@ -36,10 +39,10 @@ export class CompetitionComponent implements OnInit {
         let result = <[any]>data["data"];
         for (let i = 0; i < result.length; i++) {
           if (result[i].isPublished == undefined || result[i].isPublished == "false") {
-            result[i] = { ...result[i], publish: true, modify: true, delete: true };
+            result[i] = { ...result[i], allowPublish: true, allowModify: true, allowInvite: true, allowDelete: true, action: true };
           }
           else {
-            result[i] = { ...result[i], monitor: true, delete: true };
+            result[i] = { ...result[i], allowMonitor: true, allowInvite: true, allowDelete: true, action: true };
           }
         }
         this.avalCompetition = result;
@@ -193,47 +196,62 @@ export class CompetitionComponent implements OnInit {
   }
 
   async onCompetitionTableAction(action) {
-    console.log(action);
-    if (action.action.name == "modify") {
-      this.showEditForm = true;
-      this.competitionEditMode = true;
-      console.log(action.element);
-      this.id = action.element.id;
-      this.name = action.element.name;
-      this.shortDescription = action.element.shortDescription;
-      this.description = action.element.description;
-      this.expiredDate = action.element.expiredDate;
-      this.duration = action.element.duration;
-      this.challengeList = action.element.challenges == undefined ? [] : action.element.challenges;
-      this.challengeDataSource = new MatTableDataSource(this.challengeList);
-      this._challenge = "";
-      this.point = 0;
-      this.prerequisite = "";
-      this.hasPrerequisite = false;
-      this.enableUpdate = false;
-      this.medalUrl = await this.competition.getMedal(this.id);
-      this.coverUrl = await this.competition.getCover(this.id);
-    }
-    else if (action.action.name == "delete") {
-      this.dialog.open(ConfirmDialogComponent, {
-        width: "250px",
-        data: {
-          title: "Confirm to delete",
-          targetValue: action.element.id, onCorrect: () => {
-            this.competition.delete(action.element.id, this.auth.auth.currentUser.uid).then(res => {
-              if (res['status'] == "success") {
-                this.snackbar.open("Delete successfully", "OK", { duration: 2000 });
-                window.location.reload();
-              }
-              else {
-                this.snackbar.open("Error: " + res['message'], "OK", { duration: 2000 });
-              }
-            })
-          }
-        }
-      });
 
-    }
+    this.bottomSheet.open(ActionForCompetitionComponent, {
+      data: {
+        title: "Action with " + action.element.id,
+        element: action.element,
+        allowPublish: action.element.allowPublish,
+        allowMonitor: action.element.allowMonitor,
+        allowModify: action.element.allowModify,
+        allowInvite: action.element.allowInvite,
+        allowDelete: action.element.allowDelete,
+        onAction: async (event, element) => {
+          if (event == "modify") {
+            this.showEditForm = true;
+            this.competitionEditMode = true;
+            console.log(action.element);
+            this.id = action.element.id;
+            this.name = action.element.name;
+            this.shortDescription = action.element.shortDescription;
+            this.description = action.element.description;
+            this.expiredDate = action.element.expiredDate;
+            this.duration = action.element.duration;
+            this.challengeList = action.element.challenges == undefined ? [] : action.element.challenges;
+            this.challengeDataSource = new MatTableDataSource(this.challengeList);
+            this._challenge = "";
+            this.point = 0;
+            this.prerequisite = "";
+            this.hasPrerequisite = false;
+            this.enableUpdate = false;
+            this.medalUrl = await this.competition.getMedal(this.id);
+            this.coverUrl = await this.competition.getCover(this.id);
+          }
+          else if (event == "delete") {
+            this.dialog.open(ConfirmDialogComponent, {
+              width: "250px",
+              data: {
+                title: "Confirm to delete",
+                targetValue: action.element.id, onCorrect: () => {
+                  this.competition.delete(action.element.id, this.auth.auth.currentUser.uid).then(res => {
+                    if (res['status'] == "success") {
+                      this.snackbar.open("Delete successfully", "OK", { duration: 2000 });
+                      window.location.reload();
+                    }
+                    else {
+                      this.snackbar.open("Error: " + res['message'], "OK", { duration: 2000 });
+                    }
+                  })
+                }
+              }
+            });
+          }
+
+        }
+      }
+    });
+
+
   }
 
 
