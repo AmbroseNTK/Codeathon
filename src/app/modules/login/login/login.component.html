@@ -1,4 +1,59 @@
-<button mat-raised-button style=" position: absolute; top: 50%; left: 40%" (click)="login()">
-  <img src="https://maxcdn.icons8.com/Share/icon/Logos/google_logo1600.png" width="50"/>
-  Login with Google
-</button>
+<mat-grid-list cols="2" rowHeight="100vh" style="background: #00c853;">
+  <mat-grid-tile>
+    <mat-card class="simple-card mat-elevation-z12">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 style="color:#00c853;">
+            Want to join with us. It's free!
+          </h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" type="email" [(ngModel)]="email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Full name" value="" [(ngModel)]="username">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" type="password" [(ngModel)]="password">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Retype password" type="password" [(ngModel)]="retypedPassword">
+        </mat-form-field>
+        <button mat-raised-button class="example-full-width" color="primary" (click)="signUpWithEmailAndPassword()">Sign
+          up</button>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="simple-card mat-elevation-z12">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 style="color:#00c853;">Login and continue</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" type="email" [(ngModel)]="loginUsername">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" type="password" [(ngModel)]="loginPassword">
+        </mat-form-field>
+        <button mat-raised-button class="example-full-width" color="primary" (click)="loginWithEmailAndPassword()">
+          Login
+        </button>
+        <button mat-button class="example-full-width" color="primary" (click)="forgotPassword()">
+          I forgot the password
+        </button>
+        <h2>OR</h2>
+        <button mat-button class="example-full-width" (click)="login()">
+          <img src="https://maxcdn.icons8.com/Share/icon/Logos/google_logo1600.png" width="50" />
+          Login with Google
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

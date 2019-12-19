@@ -32,4 +32,42 @@ export class UserService {
     this.store.dispatch(new Login());
   }
 
+  public signUpWithEmailAndPassword(email, username, password, retypedPassword) {
+
+    return new Promise<string>((resolve, reject) => {
+
+      if (email == "") {
+        reject("Please enter email");
+      }
+
+      if (password == "") {
+        reject("Please enter password");
+      }
+      if (password != retypedPassword) {
+        reject("Password and retype password are not match");
+      }
+
+      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then(() => resolve("Create user successfully"))
+        .catch((err) => reject(err));
+    });
+
+  }
+
+  public loginWithEmailAndPassword(email, password) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .then(() => resolve("Login successfully"))
+        .catch((err) => reject(err));
+    })
+  }
+
+  public sendForgotPasswordEmail(email) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.sendPasswordResetEmail(email)
+        .then(() => resolve("Sent"))
+        .catch((err) => reject(err));
+    });
+  }
+
 }

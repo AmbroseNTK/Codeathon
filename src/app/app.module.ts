@@ -34,7 +34,7 @@ import { categoriesReducer } from './states/reducers/categories.reducer';
 import { CategoryEffects } from './states/effects/category.effect';
 import * as peopleReducer from './states/reducers/people.reducer';
 import { PeopleEffects } from './states/effects/people.effect';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +51,7 @@ import { PeopleEffects } from './states/effects/people.effect';
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatGridListModule,
     EffectsModule.forRoot([
       UserEffect,
       ChallengeEffect,

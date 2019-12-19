@@ -30,9 +30,13 @@
     "core-js": "^3.4.1",
     "firebase": "^7.4.0",
     "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "multi-stage-sourcemap": "^0.3.1",
     "ngx-markdown": "^8.2.1",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0",
+    "vinyl-sourcemaps-apply": "^0.2.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

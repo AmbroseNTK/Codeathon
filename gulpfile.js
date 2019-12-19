@@ -7,22 +7,22 @@ const path = require('path');
 
 gulp.task('obfuscate', function () {
     return gulp
-        .src(['dist/*.js', '!dist/vendor.*.js', '!dist/polyfills.*.js'])
+        .src(['dist/webapp/*.js', '!dist/webapp/vendor.*.js', '!dist/webapp/polyfills.*.js'])
         .pipe(
             javascriptObfuscator({
                 compact: true,
                 controlFlowFlattening: false,
                 deadCodeInjection: false,
-                debugProtection: false,
-                debugProtectionInterval: false,
-                disableConsoleOutput: false,
+                debugProtection: true,
+                debugProtectionInterval: true,
+                disableConsoleOutput: true,
                 identifierNamesGenerator: 'hexadecimal',
                 log: false,
                 renameGlobals: false,
                 rotateStringArray: false,
                 selfDefending: false,
                 stringArray: false,
-                sourceMap: true,
+                sourceMap: false,
                 unicodeEscapeSequence: false
             })
         )
@@ -30,7 +30,7 @@ gulp.task('obfuscate', function () {
 });
 
 gulp.task('combine-sourcemaps', function (done) {
-    const folder1 = './dist';
+    const folder1 = './dist/webapp';
     const folder2 = './dist-obfs';
     fs.readdirSync(folder1).forEach(file1 => {
         fs.readdirSync(folder2).forEach(file2 => {
@@ -56,4 +56,4 @@ gulp.task('delete-sourcemaps', function () {
     return del(['dist/*.map', 'dist-obfs']);
 });
 
-gulp.task('default', ['obfuscate', 'combine-sourcemaps']);
+//gulp.task('default', ['obfuscate', 'combine-sourcemaps']);
