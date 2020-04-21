@@ -160,3 +160,7 @@ and view the result at http://localhost:4200
 9. View the web app from the link that Firebase provided.
 
 ---
+
+## The live production
+
+The live production for our community is available at https://codeathon.ml and the server is https://codeathon.itsslab.xyz
