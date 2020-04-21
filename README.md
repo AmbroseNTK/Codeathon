@@ -21,7 +21,7 @@ The second reason, we have build the long term planning to expand the platform i
 ## 3. What we have done at Solution Challenge 2020
 
 We have done some basic functions for the first reason at this time and we have already hosted it online for our community.
-For the first time we operating this platform, a lot student in our university have used it for posting challenge and solving challenge. The first version of the platform still contains a lot disavantages, but we are keeping to move forward.
+For the first time operating this platform, a lot students in our university have used it for posting challenges and solving challenges. The first version of the platform still contains a lot disavantages, but we are keeping to move forward.
 
 ---
 
@@ -37,7 +37,7 @@ The platform has two sub-projects. The first one is the backend which has been b
 
 To be honest, Google Cloud Platform has provided a lot of services for our project such as Cloud Compute Engine, App Engine and it really useful and make our project is more easier. Unfortunatelly, we do not have enough credits to run our backend on GCP in the long time, so we have moved our backend to others VPS which is low cost.
 
-In a nut shell, the backend server manages the virtual machine for running user solutions. It is very importance to isolate the user's code environemnt because it may contain dangerous code for our server.
+In a nut shell, the backend server manages the virtual machine for running user solutions. It is very importance to isolate the user's code environment because it may contain dangerously code for our server.
 Beside managing new challenge posted by user, the backend runs user's code with the test cases defined in the challenges and evalutes the result.
 
 The second one is the frontend project, we have built the web app with Angular. This app will interact with backend and serve the users.
