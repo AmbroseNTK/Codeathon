@@ -58,4 +58,17 @@ In the first versions, these functions are enough for testing and surveying the 
 
 We will describe how to hosting the backend and the frontend of the platform step by step.
 
+First, clone this project using git
+
+```bash
+    git clone https://github.com/AmbroseNTK/Codeathon
+```
+
+1. Connect to virtual machine or server on GCP (Compute Engine) or any cloud service via SSH
+2. Install Docker on this machine
+
+```bash
+    sudo snap install docker
+```
+
 ---
