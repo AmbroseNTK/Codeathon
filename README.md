@@ -62,13 +62,24 @@ First, clone this project using git
 
 ```bash
     git clone https://github.com/AmbroseNTK/Codeathon
+    cd Codeathon
+    git submodule update
 ```
+
+Second, build virtual machine for running user solution
 
 1. Connect to virtual machine or server on GCP (Compute Engine) or any cloud service via SSH
 2. Install Docker on this machine
 
 ```bash
     sudo snap install docker
+```
+
+3. Build the images and run it
+
+```bash
+    cd compilebox/Setup
+    sudo ./Install_16.04.sh
 ```
 
 ---
