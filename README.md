@@ -82,4 +82,81 @@ Second, build virtual machine for running user solution
     sudo ./Install_16.04.sh
 ```
 
+4. Install Nodejs 10
+
+```bash
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    sudo apt install nodejs
+```
+
+5. Restore node_modules of the server
+
+```bash
+    cd ../API
+    sudo npm i
+```
+
+6. Create a Firebase project and init the realtime database, then get the firebase admin key .json
+
+7. Rename the key to admin_key.json and upload it to API folder
+8. Edit file firebase.js at line 3: Change databaseURL to your firebase database URL
+
+9. Start the backend on port 8989. If you want to serve to the Internet, make sure you allow it to open port 8989.
+
+10. You should secure the connection to this server by using SSL Letsencrypt and NGINX for proxy.
+
+Now the backend available at https://server.yourdomain.com
+
+If you run at the localhost, you can skip step 10.
+
+Next, we config the frontend - Angular app
+
+1. Go to Codeathon folder
+
+2. In Firebase project, add new web app and copy the firebase config, then paste it into environment.prod.ts file at firebase.
+
+3. To enable login with Google function, please go to Firebase Authentication and enable Google provider in Firebase project
+
+4. Add a config for the system on Firebase Realtime Database manually.
+
+```json
+{
+  "config": {
+    "backend": "https://server.yourdomain.com"
+  }
+}
+```
+
+5. Restore all node_modules of Angular project and install Angular CLI
+
+```bash
+    sudo npm i
+    npm i -g @angular/cli
+```
+
+6. If you want to run this app locally, just run
+
+```bash
+    ng serve
+```
+
+and view the result at http://localhost:4200
+
+7. To build production
+
+```bash
+    ng build --prod --aot
+```
+
+8. Using Firebase hosting to host the web app
+
+```bash
+   sudo npm install -g firebase-tools
+   firebase login
+   firebase init
+   firebase deploy
+```
+
+9. View the web app from the link that Firebase provided.
+
 ---
